@@ -1,6 +1,6 @@
 # OGM — dónde vamos
 
-Última tanda: **21 de septiembre de 2026** (tanda 3: sitio con lo aprendido del estudio). Trigger: "CONTINUE OGM".
+Última tanda: **21 de septiembre de 2026** (tanda 6: transmisiones, canal de ejemplo y propuesta v2). Trigger: "CONTINUE OGM".
 
 ## Qué está hecho y probado
 
@@ -67,6 +67,27 @@ revisada en el navegador.
   la base está vacía (`vercel-build`). Clave del admin de producción en
   `.admin-password` (local, fuera de git). Deploy: `vercel deploy --prod`.
   Falta: `APP_URL` de producción y la app de Discord para el login real.
+
+- **Tanda 6 — transmisiones y propuesta:**
+  - "La escena en vivo" (portada, `/en-vivo`, cada juego): canales **oficiales**
+    verificados (`data/streams.ts`); de YouTube se toma la transmisión
+    competitiva más reciente vía feed, cada hora. Twitch: clashroyale y
+    brawlhalla365 (24/7). Tarjetas a ≥420 px por la regla de 400 px de Twitch.
+  - **Canal de ejemplo en producción: ironmouse** (`OGM_TWITCH_URL` +
+    `OGM_TWITCH_EXAMPLE=1` en Vercel); el sitio lo dice en pantalla. Creador
+    invitado de ejemplo: video de Gilga Sunrise. Cuando OGM tenga canal:
+    cambiar `OGM_TWITCH_URL` y quitar `OGM_TWITCH_EXAMPLE`.
+  - **Propuesta v2** con estudio de mercado y Business Model Canvas:
+    artifact claude.ai/artifact/KF7fhECDeykxKdm4MiRsD9 y
+    `~/Downloads/OGM-2026-Propuesta.pdf` (11 págs).
+
+## Por dónde seguir (fase 1 de la propuesta)
+
+1. Cuentas oficiales de OGM (Discord servidor + app de login, Twitch, Kick).
+2. Consulta legal Ley 81-2019 antes de cualquier cobro.
+3. Dominio ogmadness.net → Vercel.
+4. Primera fecha real de la liga.
+5. App de Twitch para "lo más transmitido" (y verificarlo en vivo).
 
 ## Decisiones tomadas
 
