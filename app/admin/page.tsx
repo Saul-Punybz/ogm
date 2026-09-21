@@ -4,6 +4,8 @@ import { getAllTournaments, getCounts } from "@/lib/queries";
 import { fecha } from "@/lib/format";
 import { ActionForm } from "@/components/forms";
 import { login, logout, recalcular } from "./actions";
+import { resolverReclamo } from "../cuenta/actions";
+import { q } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Panel" };
@@ -27,7 +29,15 @@ export default async function Admin() {
     );
   }
 
-  const [tournaments, counts] = await Promise.all([getAllTournaments(), getCounts()]);
+  const [tournaments, counts, reclamos] = await Promise.all([
+    getAllTournaments(),
+    getCounts(),
+    q<{ id: number; tag: string; discord_name: string; created_at: string }>(
+      `SELECT c.id, p.tag, c.discord_name, c.created_at::text AS created_at
+         FROM profile_claims c JOIN players p ON p.id = c.player_id
+        WHERE c.status = 'pendiente' ORDER BY c.created_at`,
+    ),
+  ]);
 
   return (
     <>
@@ -54,6 +64,51 @@ export default async function Admin() {
           </form>
         </div>
       </section>
+
+      {reclamos.length > 0 && (
+        <section className="section wrap stack">
+          <h2>Reclamos de perfil</h2>
+          <p className="muted small">
+            Alguien dice ser dueño de un perfil con historial. Confirma por Discord antes de aprobar.
+          </p>
+          <div className="t-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Perfil</th>
+                  <th>Cuenta de Discord</th>
+                  <th>Fecha</th>
+                  <th className="right">Decisión</th>
+                </tr>
+              </thead>
+              <tbody>
+                {reclamos.map((r) => (
+                  <tr key={r.id}>
+                    <td>
+                      <Link href={`/jugadores/${encodeURIComponent(r.tag)}`} className="tag">
+                        {r.tag}
+                      </Link>
+                    </td>
+                    <td className="small">{r.discord_name}</td>
+                    <td className="small num muted">{fecha(r.created_at)}</td>
+                    <td className="right">
+                      <form action={resolverReclamo} style={{ display: "inline-flex", gap: 8 }}>
+                        <input type="hidden" name="id" value={r.id} />
+                        <button type="submit" name="decision" value="aprobar">
+                          Aprobar
+                        </button>
+                        <button type="submit" name="decision" value="rechazar" className="ghost">
+                          Rechazar
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
 
       <section className="section wrap stack">
         <h2>Torneos</h2>

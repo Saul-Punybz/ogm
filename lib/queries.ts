@@ -236,11 +236,14 @@ export interface PlayerProfile {
   tiktok: string | null;
   discord: string | null;
   is_example: boolean;
+  verified: boolean;
+  avatar_url: string | null;
 }
 
 export function getPlayer(tag: string) {
   return one<PlayerProfile>(
-    `SELECT id, tag, full_name, town, twitch, tiktok, discord, is_example
+    `SELECT id, tag, full_name, town, twitch, tiktok, discord, is_example,
+            (discord_id IS NOT NULL) AS verified, avatar_url
        FROM players WHERE LOWER(tag) = LOWER($1)`,
     [tag],
   );

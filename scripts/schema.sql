@@ -135,3 +135,20 @@ CREATE INDEX IF NOT EXISTS idx_match_sides_team ON match_sides(team_id);
 CREATE INDEX IF NOT EXISTS idx_matches_tournament ON matches(tournament_id);
 CREATE INDEX IF NOT EXISTS idx_results_tournament ON results(tournament_id);
 CREATE INDEX IF NOT EXISTS idx_history_player ON rating_history(player_id, game_id);
+
+-- ---------- Cuentas (login con Discord) ----------
+ALTER TABLE players ADD COLUMN IF NOT EXISTS discord_id TEXT UNIQUE;
+ALTER TABLE players ADD COLUMN IF NOT EXISTS avatar_url TEXT;
+
+-- Reclamar un perfil que ya tiene historial pasa por aprobacion: si no, cualquiera
+-- se queda con el perfil del campeon.
+CREATE TABLE IF NOT EXISTS profile_claims (
+  id            SERIAL PRIMARY KEY,
+  player_id     INTEGER NOT NULL REFERENCES players(id) ON DELETE CASCADE,
+  discord_id    TEXT NOT NULL,
+  discord_name  TEXT NOT NULL,
+  avatar_url    TEXT,
+  status        TEXT NOT NULL DEFAULT 'pendiente' CHECK (status IN ('pendiente', 'aprobado', 'rechazado')),
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_claims_status ON profile_claims(status);

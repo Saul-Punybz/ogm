@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
+import { getSession } from "@/lib/session";
 
 export const metadata: Metadata = {
   title: { default: "OGM · Online Gaming Madness", template: "%s · OGM" },
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
     "La liga de esports de Puerto Rico: rankings por juego, perfiles de jugadores y el salón de campeones desde 2010.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const session = await getSession();
   return (
     <html lang="es">
       <head>
@@ -32,9 +34,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/campeones">Campeones</Link>
               <Link href="/admin">Admin</Link>
             </nav>
-            <a className="nav-cta" href="https://discord.gg" target="_blank" rel="noreferrer">
-              Entrar al Discord
-            </a>
+            <Link className="nav-cta" href="/cuenta">
+              {session ? session.name : "Entrar con Discord"}
+            </Link>
           </div>
         </header>
 

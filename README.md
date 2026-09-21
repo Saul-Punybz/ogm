@@ -19,6 +19,27 @@ Panel de admin en `/admin`. La clave sale de `ADMIN_PASSWORD` en `.env.local`
 > **Importante en local:** la base embebida (PGlite) es de un solo proceso.
 > Para correr `npm run setup` o `npm run recalc`, para primero el `npm run dev`.
 
+## Login con Discord
+
+1. Crear una aplicación en https://discord.com/developers/applications
+2. En **OAuth2**, agregar el redirect: `<APP_URL>/api/auth/discord/callback`
+   (en local: `http://localhost:3000/api/auth/discord/callback`)
+3. Copiar el Client ID y el Client Secret a `.env.local` como
+   `DISCORD_CLIENT_ID` y `DISCORD_CLIENT_SECRET`, y generar `AUTH_SECRET`
+   con `openssl rand -base64 32`.
+4. Para ser admin, poner tu ID de Discord en `ADMIN_DISCORD_IDS`
+   (Discord → Ajustes → Avanzado → Modo desarrollador, clic derecho en tu nombre → Copiar ID).
+
+Solo se pide el permiso `identify`: nombre y foto. Nada de correo ni servidores.
+
+**Perfiles:** crear un perfil nuevo es inmediato. Reclamar uno que ya existe se
+enlaza solo si no tiene historial; si tiene partidas o títulos, queda pendiente
+hasta que un admin lo apruebe en `/admin`. Así nadie se queda con el perfil del
+campeón.
+
+**Para probar sin Discord** (solo en desarrollo): `/api/auth/dev?name=Prueba`
+entra con una cuenta falsa. En producción esa ruta da 404.
+
 ## Base de datos
 
 - **Sin `DATABASE_URL`**: corre sobre PGlite, un Postgres embebido que guarda

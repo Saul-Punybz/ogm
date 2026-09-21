@@ -1,12 +1,22 @@
 import { cookies } from "next/headers";
+import { getSession } from "./session";
 
 const COOKIE = "ogm_admin";
 
 /**
- * Autenticacion minima para la v1: una clave compartida en ADMIN_PASSWORD.
- * Cuando entre el login con Discord, esto se reemplaza por roles de verdad.
+ * Acceso al panel: por cuenta de Discord (ADMIN_DISCORD_IDS) o por la clave
+ * compartida ADMIN_PASSWORD mientras Discord no este configurado.
  */
 export async function isAdmin(): Promise<boolean> {
+  // Via 1: cuenta de Discord en la lista ADMIN_DISCORD_IDS.
+  const session = await getSession();
+  const admins = (process.env.ADMIN_DISCORD_IDS ?? "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (session && admins.includes(session.discordId)) return true;
+
+  // Via 2: la clave compartida, para cuando todavia no hay Discord configurado.
   const store = await cookies();
   const expected = process.env.ADMIN_PASSWORD ?? "ogm2026";
   return store.get(COOKIE)?.value === expected;

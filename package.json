@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@electric-sql/pglite": "0.5.8",
+    "arctic": "3.7.0",
+    "jose": "6.2.12",
     "next": "16.3.5",
     "openskill": "5.0.1",
     "postgres": "3.4.9",

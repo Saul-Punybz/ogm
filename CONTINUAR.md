@@ -1,6 +1,6 @@
 # OGM — dónde vamos
 
-Última tanda: **21 de septiembre de 2026**. Trigger: "CONTINUE OGM".
+Última tanda: **21 de septiembre de 2026** (tanda 2: login con Discord). Trigger: "CONTINUE OGM".
 
 ## Qué está hecho y probado
 
@@ -19,6 +19,13 @@ revisada en el navegador.
 - **Datos**: archivo real de 2010 + temporada móvil de ejemplo (Free Fire,
   CoD Mobile, SF6), rotulada como ejemplo en pantalla.
 
+- **Login con Discord** (arctic + jose, sin Auth.js que sigue en beta): sesión
+  firmada en cookie, crear perfil, reclamar perfil con aprobación de admin cuando
+  tiene historial, admins por `ADMIN_DISCORD_IDS`, insignia de verificado.
+  Probado en navegador real y con curl: state falso rechazado, cookie alterada
+  rechazada, no-admin no puede aprobar. **Falta:** probar con una app real de
+  Discord (hay que crearla — ver README).
+
 ## Decisiones tomadas
 
 - Juegos de arranque: **móvil al frente** (Free Fire y CoD Mobile), más SF6 y
@@ -31,8 +38,8 @@ revisada en el navegador.
 
 ## Lo que sigue
 
-1. **Login con Discord** (Auth.js) en vez de la clave compartida, con roles por
-   rango. Es lo que más falta para que la comunidad se apropie del sitio.
+1. Crear la app de Discord y probar el login real. Luego roles en el servidor
+   de Discord según el rango (bot).
 2. **Inscripción de jugadores y escuadras** desde el sitio, con cobro por ATH
    Móvil y Stripe. Hoy los participantes se crean solos al entrar resultados.
 3. **Bracket visual** de eliminación para los torneos de pelea.
@@ -40,6 +47,13 @@ revisada en el navegador.
    `rating_history`, falta dibujarla).
 5. **Puntos de temporada** como tabla propia, hoy se leen de `results.points`.
 6. Desplegar a Vercel con Neon y conectar el dominio.
+
+## Estudio de juegos y tendencias
+
+Tres agentes investigaron en paralelo: `research/01_moviles_establecidos.md`,
+`research/02_indie_emergentes.md`, `research/03_tendencias.md`. Hallazgo a
+verificar antes de cobrar nada: la Ley 81-2019 de PR mencionaría los esports
+como actividad regulada por la Comisión de Juegos.
 
 ## Notas de operación
 

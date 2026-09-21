@@ -39,6 +39,19 @@ export default async function JugadorPage({ params }: { params: Promise<{ tag: s
         {player.full_name && player.full_name !== player.tag && (
           <p className="muted">{player.full_name}</p>
         )}
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {player.verified && <span className="pill pill-flare">Verificado con Discord</span>}
+          {player.twitch && (
+            <a className="pill" href={`https://twitch.tv/${player.twitch}`} target="_blank" rel="noreferrer">
+              Twitch · {player.twitch}
+            </a>
+          )}
+          {player.tiktok && (
+            <a className="pill" href={`https://tiktok.com/@${player.tiktok}`} target="_blank" rel="noreferrer">
+              TikTok · @{player.tiktok}
+            </a>
+          )}
+        </div>
         {player.is_example && (
           <p className="banner">Perfil de ejemplo, cargado para mostrar cómo se ve la plataforma.</p>
         )}
