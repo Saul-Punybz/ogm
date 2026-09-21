@@ -103,3 +103,11 @@ demás) salen del archivo público de ogmadness.net, capturado el 9 de enero de
 Todo lo de 2026 es de ejemplo, marcado con `is_example` y rotulado en pantalla
 para que nadie lo confunda con resultados de verdad. Se borra cargando datos
 reales por el panel de admin.
+
+## Licencia
+
+**Todos los derechos reservados.** Copyright (c) 2026 Saul Gonzalez. El código es
+visible en GitHub, pero nadie más puede usarlo, copiarlo, modificarlo ni
+distribuirlo sin permiso por escrito. El titular puede cambiar la licencia en el
+futuro. Los componentes de terceros (dependencias, ilustraciones de DiceBear,
+imágenes de los juegos) conservan sus propias licencias. Ver [LICENSE](LICENSE).

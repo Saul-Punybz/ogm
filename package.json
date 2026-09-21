@@ -2,6 +2,8 @@
   "name": "ogm",
   "private": true,
   "version": "0.1.0",
+  "license": "UNLICENSED",
+  "author": "Saul Gonzalez",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

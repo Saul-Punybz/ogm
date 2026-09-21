@@ -1,0 +1,79 @@
+OGM — Online Gaming Madness
+Copyright (c) 2026 Saul Gonzalez. Todos los derechos reservados.
+Copyright (c) 2026 Saul Gonzalez. All rights reserved.
+
+================================================================================
+ESPAÑOL
+================================================================================
+
+Este software, su código fuente, su diseño, sus datos y su documentación (el
+"Software") son propiedad exclusiva de Saul Gonzalez (el "Titular").
+
+1. SIN PERMISO DE USO. No se concede ninguna licencia ni permiso. Nadie, salvo el
+   Titular, puede usar, copiar, modificar, fusionar, publicar, distribuir,
+   sublicenciar, vender, desplegar, alojar u ofrecer como servicio el Software, en
+   todo o en parte, sin autorización previa y por escrito del Titular.
+
+2. VISIBILIDAD EN GITHUB. Que el repositorio sea público no concede ningún
+   derecho de uso. Solo aplican los derechos mínimos que los Términos de Servicio
+   de GitHub otorgan a sus usuarios para ver el repositorio y hacerle fork dentro
+   de GitHub. Ese fork no da permiso para usar, ejecutar, modificar ni distribuir
+   el Software fuera de lo que dichos términos exigen.
+
+3. CAMBIO DE LICENCIA. El Titular se reserva el derecho de cambiar, en cualquier
+   momento y a su sola discreción, los términos bajo los que se ofrece el
+   Software, incluida la publicación de versiones futuras o anteriores bajo otra
+   licencia (abierta, comercial o de otro tipo).
+
+4. COMPONENTES DE TERCEROS. Esta licencia no aplica a los componentes de
+   terceros incluidos o usados por el Software, que conservan sus propias
+   licencias y titulares:
+   - Dependencias de npm: según la licencia de cada paquete.
+   - Ilustraciones "Notionists" de DiceBear: diseño CC0 1.0, código MIT.
+   - Imágenes de los juegos en public/juegos/: propiedad de sus respectivas
+     editoras (ver public/juegos/FUENTES.md). Se usan solo para identificar cada
+     juego y no se conceden bajo esta licencia.
+   - Nombres y marcas de juegos, plataformas y editoras: de sus titulares.
+
+5. SIN GARANTÍA. El Software se entrega "tal cual", sin garantía de ningún tipo.
+   El Titular no será responsable de ningún daño derivado de su uso no
+   autorizado.
+
+Para pedir permiso de uso, contacte al Titular por GitHub: @Saul-Punybz.
+
+================================================================================
+ENGLISH
+================================================================================
+
+This software, its source code, design, data and documentation (the "Software")
+are the exclusive property of Saul Gonzalez (the "Owner").
+
+1. NO PERMISSION TO USE. No license or permission is granted. No one other than
+   the Owner may use, copy, modify, merge, publish, distribute, sublicense, sell,
+   deploy, host or offer as a service the Software, in whole or in part, without
+   the Owner's prior written permission.
+
+2. GITHUB VISIBILITY. The repository being public grants no right of use. Only
+   the minimum rights that GitHub's Terms of Service grant its users to view the
+   repository and fork it within GitHub apply. Such a fork grants no permission to
+   use, run, modify or distribute the Software beyond what those terms require.
+
+3. RELICENSING. The Owner reserves the right to change, at any time and at the
+   Owner's sole discretion, the terms under which the Software is offered,
+   including releasing future or past versions under a different license (open,
+   commercial or otherwise).
+
+4. THIRD-PARTY COMPONENTS. This license does not apply to third-party components
+   included in or used by the Software, which keep their own licenses and owners:
+   npm dependencies (per each package's license); DiceBear "Notionists"
+   illustrations (design CC0 1.0, code MIT); game images in public/juegos/ (owned
+   by their publishers, see public/juegos/FUENTES.md; used only to identify each
+   game and not granted under this license); and names and trademarks of games,
+   platforms and publishers (owned by their holders).
+
+5. NO WARRANTY. The Software is provided "as is", without warranty of any kind.
+   The Owner shall not be liable for any damage arising from unauthorized use.
+
+To request permission, contact the Owner on GitHub: @Saul-Punybz.
+
+In case of conflict between the two versions, the Spanish version governs.
