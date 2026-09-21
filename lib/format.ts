@@ -27,3 +27,17 @@ export function resultadoTexto(kind: string, placement: number, total: number): 
   if (kind === "duel") return placement === 1 ? "Ganó" : "Perdió";
   return `${placement} de ${total}`;
 }
+
+const FECHA_HORA = new Intl.DateTimeFormat("es-PR", {
+  timeZone: ZONA,
+  weekday: "short",
+  day: "numeric",
+  month: "short",
+  hour: "numeric",
+  minute: "2-digit",
+});
+
+/** "sáb, 4 oct, 7:00 p. m." en hora de Puerto Rico. */
+export function fechaHora(iso: string): string {
+  return FECHA_HORA.format(new Date(iso)).replace(/\./g, "").replace(/\s+/g, " ");
+}

@@ -7,6 +7,8 @@ import {
   getTournamentsByGame,
 } from "@/lib/queries";
 import { fecha } from "@/lib/format";
+import { GameVisual } from "@/components/game-art";
+import { Avatar } from "@/components/avatar";
 
 export const dynamic = "force-dynamic";
 
@@ -36,6 +38,7 @@ export default async function JuegoPage({ params }: { params: Promise<{ slug: st
           {game.platform} · {game.mode === "br" ? "Battle royale" : game.mode === "squad" ? "Por equipos" : "Individual"}
         </div>
         <h1>{game.name}</h1>
+        <GameVisual slug={game.slug} mode={game.mode} name={game.name} archive={game.stage === "archivo"} className="gv-hero" />
         {game.tagline && <p className="muted">{game.tagline}</p>}
         {game.stage === "archivo" && (
           <p className="banner">
@@ -115,10 +118,13 @@ export default async function JuegoPage({ params }: { params: Promise<{ slug: st
                   <tr key={r.player_id}>
                     <td className={`pos ${i === 0 ? "pos-1" : ""}`}>{i + 1}</td>
                     <td>
-                      <Link href={`/jugadores/${encodeURIComponent(r.tag)}`} className="tag">
-                        {r.tag}
+                      <Link href={`/jugadores/${encodeURIComponent(r.tag)}`} className="who tag">
+                        <Avatar tag={r.tag} url={r.avatar_url} size={28} />
+                        <span>
+                          {r.tag}
+                          {esEquipo && <span className="sub">{r.town ?? "Puerto Rico"}</span>}
+                        </span>
                       </Link>
-                      {esEquipo && <span className="sub">{r.town ?? "Puerto Rico"}</span>}
                     </td>
                     <td className="small muted">
                       {esEquipo

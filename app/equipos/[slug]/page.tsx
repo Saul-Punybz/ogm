@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTeam, getTeamRoster, getTeamResults } from "@/lib/queries";
 import { fecha } from "@/lib/format";
+import { Avatar } from "@/components/avatar";
+import { GameVisual } from "@/components/game-art";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +28,9 @@ export default async function EquipoPage({ params }: { params: Promise<{ slug: s
           {team.town ? ` · ${team.town}` : ""}
         </div>
         <h1>{team.name}</h1>
+        {team.game_slug && (
+          <GameVisual slug={team.game_slug} mode={team.mode} name={team.game_name} archive={!team.town && !team.is_example} className="gv-hero" />
+        )}
         <p className="muted">
           {titulos > 0
             ? `${titulos} campeonato${titulos > 1 ? "s" : ""} de OGM`
@@ -56,8 +61,9 @@ export default async function EquipoPage({ params }: { params: Promise<{ slug: s
                 {roster.map((p) => (
                   <tr key={p.tag}>
                     <td>
-                      <Link href={`/jugadores/${encodeURIComponent(p.tag)}`} className="tag">
-                        {p.tag}
+                      <Link href={`/jugadores/${encodeURIComponent(p.tag)}`} className="who tag">
+                        <Avatar tag={p.tag} url={p.avatar_url} size={28} />
+                        <span>{p.tag}</span>
                       </Link>
                     </td>
                     <td className="small muted">{p.town ?? "—"}</td>

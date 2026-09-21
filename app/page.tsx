@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { getGames, getRanking, getUpcoming, getChampions } from "@/lib/queries";
-import { fecha } from "@/lib/format";
+import { getHighlights } from "@/lib/highlights";
+import { fecha, fechaHora } from "@/lib/format";
 import { site } from "@/lib/site";
 import { VoteBlock } from "@/components/vote";
+import { LiveStage } from "@/components/live-stage";
+import { GameVisual } from "@/components/game-art";
+import { Avatar } from "@/components/avatar";
 
 export const dynamic = "force-dynamic";
 
@@ -15,13 +19,16 @@ const FORMATO: Record<string, string> = {
 export default async function Home() {
   const games = await getGames();
   const temporada = games.filter((g) => g.stage === "temporada");
-  const [upcoming, champions, rankings] = await Promise.all([
+  const [upcoming, champions, rankings, momentos] = await Promise.all([
     getUpcoming(3),
     getChampions(),
     Promise.all(temporada.map(async (g) => ({ game: g, rows: await getRanking(g.id, 5) }))),
+    getHighlights(),
   ]);
   const conRanking = rankings.filter((r) => r.rows.length > 0);
   const archive = champions.filter((c) => c.is_archive).slice(0, 3);
+  const next = upcoming[0] ?? null;
+  const hayMomentos = momentos.subida || momentos.sorpresa || momentos.bajas || momentos.racha;
 
   return (
     <>
@@ -42,6 +49,43 @@ export default async function Home() {
             Ver el ranking
           </Link>
         </div>
+      </section>
+
+      <section className="wrap" style={{ paddingBottom: 36 }}>
+        <LiveStage
+          twitchUrl={site.twitch}
+          next={
+            next
+              ? {
+                  name: next.name,
+                  slug: next.slug,
+                  startsAt: next.starts_at,
+                  venue: next.venue,
+                  game: next.game_short,
+                }
+              : null
+          }
+          fechaTexto={next ? fechaHora(next.starts_at) : null}
+        />
+      </section>
+
+      <section className="section wrap stack">
+        <h2>Temporada 1</h2>
+        <div className="cards">
+          {temporada.map((g) => (
+            <Link key={g.slug} href={`/juegos/${g.slug}`} className="card card-art">
+              <GameVisual slug={g.slug} mode={g.mode} name={g.name} />
+              <div className="card-body">
+                <span className="format">
+                  {FORMATO[g.mode]}
+                  {g.team_size > 1 ? ` · escuadras de ${g.team_size}` : ""}
+                </span>
+                <h3>{g.name}</h3>
+                <p className="small muted">{g.tagline}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
         <div className="promise">
           <div>
             <b>Inscripción gratis</b>
@@ -58,22 +102,67 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="section wrap stack">
-        <h2>Temporada 1</h2>
-        <div className="cards">
-          {temporada.map((g) => (
-            <Link key={g.slug} href={`/juegos/${g.slug}`} className="card game-card">
-              <span className="format">
-                {FORMATO[g.mode]}
-                {g.team_size > 1 ? ` · escuadras de ${g.team_size}` : ""}
-              </span>
-              <h3>{g.name}</h3>
-              <p className="small muted">{g.tagline}</p>
-              <span className="small">Ver ranking →</span>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {hayMomentos && (
+        <section className="section wrap stack">
+          <div className="row-between">
+            <h2>Momentos de la liga</h2>
+            <span className="small muted">Últimos 30 días · salen solos de los resultados</span>
+          </div>
+          <div className="moments">
+            {momentos.subida && (
+              <Link href={`/jugadores/${encodeURIComponent(momentos.subida.tag)}`} className="moment">
+                <span className="eyebrow">Jugador del mes</span>
+                <div className="who">
+                  <Avatar tag={momentos.subida.tag} url={momentos.subida.avatar_url} size={40} />
+                  <h3>{momentos.subida.tag}</h3>
+                </div>
+                <span className="big">+{momentos.subida.delta}</span>
+                <p className="small muted">
+                  de rating en {momentos.subida.game_name}. Va en {momentos.subida.display}.
+                </p>
+              </Link>
+            )}
+            {momentos.sorpresa && (
+              <Link href={`/torneos/${momentos.sorpresa.tournament_slug}`} className="moment">
+                <span className="eyebrow">La sorpresa</span>
+                <h3>
+                  {momentos.sorpresa.winner} le ganó a {momentos.sorpresa.loser}
+                </h3>
+                <span className="big">
+                  {momentos.sorpresa.loser_before - momentos.sorpresa.winner_before}
+                </span>
+                <p className="small muted">
+                  puntos de rating de diferencia antes de la partida.{" "}
+                  {momentos.sorpresa.round ? `${momentos.sorpresa.round}, ` : ""}
+                  {momentos.sorpresa.tournament_name}.
+                </p>
+              </Link>
+            )}
+            {momentos.bajas && (
+              <Link href={`/torneos/${momentos.bajas.tournament_slug}`} className="moment">
+                <span className="eyebrow">Más bajas en un lobby</span>
+                <h3>{momentos.bajas.team_name ?? momentos.bajas.player_tag}</h3>
+                <span className="big">{momentos.bajas.kills}</span>
+                <p className="small muted">
+                  bajas en {momentos.bajas.round?.toLowerCase() ?? "un lobby"} de{" "}
+                  {momentos.bajas.tournament_name}.
+                </p>
+              </Link>
+            )}
+            {momentos.racha && (
+              <Link href={`/jugadores/${encodeURIComponent(momentos.racha.tag)}`} className="moment">
+                <span className="eyebrow">En racha</span>
+                <div className="who">
+                  <Avatar tag={momentos.racha.tag} url={momentos.racha.avatar_url} size={40} />
+                  <h3>{momentos.racha.tag}</h3>
+                </div>
+                <span className="big">{momentos.racha.wins}</span>
+                <p className="small muted">victorias seguidas en {momentos.racha.game_name}.</p>
+              </Link>
+            )}
+          </div>
+        </section>
+      )}
 
       {upcoming.length > 0 && (
         <section className="section wrap stack">
@@ -85,14 +174,15 @@ export default async function Home() {
           </div>
           <div className="cards">
             {upcoming.map((t) => (
-              <Link key={t.slug} href={`/torneos/${t.slug}`} className="card">
-                <span className={t.status === "abierto" ? "pill pill-flare" : "pill"}>
-                  {t.status === "abierto" ? "Inscripción abierta" : t.game_short}
-                </span>
-                <h3>{t.name}</h3>
-                <p className="small muted">
-                  {fecha(t.starts_at)} · {t.venue}
-                </p>
+              <Link key={t.slug} href={`/torneos/${t.slug}`} className="card card-art">
+                <GameVisual slug={t.game_slug} mode={t.game_mode} name={t.game_name} />
+                <div className="card-body">
+                  <span className={t.status === "abierto" ? "pill pill-flare" : "pill"}>
+                    {t.status === "abierto" ? "Inscripción abierta" : t.game_short}
+                  </span>
+                  <h3>{t.name}</h3>
+                  <p className="small muted">{fechaHora(t.starts_at)}</p>
+                </div>
               </Link>
             ))}
           </div>
@@ -133,8 +223,9 @@ export default async function Home() {
                   <tr key={r.player_id}>
                     <td className={`pos ${i === 0 ? "pos-1" : ""}`}>{i + 1}</td>
                     <td>
-                      <Link href={`/jugadores/${encodeURIComponent(r.tag)}`} className="tag">
-                        {r.tag}
+                      <Link href={`/jugadores/${encodeURIComponent(r.tag)}`} className="who tag">
+                        <Avatar tag={r.tag} url={r.avatar_url} size={28} />
+                        <span>{r.tag}</span>
                       </Link>
                     </td>
                     <td className="small muted">
@@ -155,17 +246,6 @@ export default async function Home() {
         </section>
       ))}
 
-      <section className="section wrap stack">
-        <h2>En vivo</h2>
-        <p className="muted small">
-          Cada fecha de la liga se transmite en Kick y en Twitch, con narración en español.
-        </p>
-        <div className="cards">
-          <StreamCard name="Kick" url={site.kick} />
-          <StreamCard name="Twitch" url={site.twitch} />
-        </div>
-      </section>
-
       {archive.length > 0 && (
         <section className="section wrap stack">
           <div className="row-between">
@@ -180,12 +260,15 @@ export default async function Home() {
           </p>
           <div className="cards">
             {archive.map((c) => (
-              <Link key={c.tournament_slug} href={`/torneos/${c.tournament_slug}`} className="card">
-                <span className="pill">{c.game_short}</span>
-                <h3>{c.team_name ?? c.player_tag}</h3>
-                <p className="small muted">
-                  {c.tournament_name} · {fecha(c.starts_at)}
-                </p>
+              <Link key={c.tournament_slug} href={`/torneos/${c.tournament_slug}`} className="card card-art">
+                <GameVisual slug={c.game_slug} mode="duel" name={c.game_short} archive />
+                <div className="card-body">
+                  <span className="pill">{c.game_short}</span>
+                  <h3>{c.team_name ?? c.player_tag}</h3>
+                  <p className="small muted">
+                    {c.tournament_name} · {fecha(c.starts_at)}
+                  </p>
+                </div>
               </Link>
             ))}
           </div>
@@ -205,22 +288,5 @@ export default async function Home() {
         </p>
       </section>
     </>
-  );
-}
-
-function StreamCard({ name, url }: { name: string; url: string | null }) {
-  if (!url) {
-    return (
-      <div className="card">
-        <h3>{name}</h3>
-        <p className="small muted">Canal por anunciar.</p>
-      </div>
-    );
-  }
-  return (
-    <a href={url} target="_blank" rel="noreferrer" className="card">
-      <h3>{name}</h3>
-      <p className="small muted">Ver el canal →</p>
-    </a>
   );
 }

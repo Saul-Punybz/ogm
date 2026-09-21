@@ -8,6 +8,9 @@ import {
   getPlayerRivals,
 } from "@/lib/queries";
 import { fecha, plural, resultadoTexto } from "@/lib/format";
+import { ratingHistory } from "@/lib/highlights";
+import { Avatar } from "@/components/avatar";
+import { RatingChart } from "@/components/rating-chart";
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +31,9 @@ export default async function JugadorPage({ params }: { params: Promise<{ tag: s
     getPlayerRivals(player.id),
   ]);
 
+  const historias = await Promise.all(
+    ratings.map(async (r) => ({ ...r, puntos: await ratingHistory(player.id, r.game_id) })),
+  );
   const campeonatos = titles.filter((t) => t.position === 1);
   const podios = titles.filter((t) => t.position > 1 && t.position <= 3);
 
@@ -35,7 +41,10 @@ export default async function JugadorPage({ params }: { params: Promise<{ tag: s
     <>
       <section className="hero wrap stack">
         <div className="eyebrow">{player.town ?? "Puerto Rico"}</div>
-        <h1>{player.tag}</h1>
+        <div className="who">
+          <Avatar tag={player.tag} url={player.avatar_url} size={64} />
+          <h1>{player.tag}</h1>
+        </div>
         {player.full_name && player.full_name !== player.tag && (
           <p className="muted">{player.full_name}</p>
         )}
@@ -118,6 +127,25 @@ export default async function JugadorPage({ params }: { params: Promise<{ tag: s
           </div>
         )}
       </section>
+
+      {historias.some((h) => h.puntos.length > 0) && (
+        <section className="section wrap stack">
+          <h2>Cómo ha ido</h2>
+          <div className="cards" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}>
+            {historias
+              .filter((h) => h.puntos.length > 0)
+              .map((h) => (
+                <div key={h.game_slug} className="stack-sm">
+                  <div className="row-between">
+                    <h3>{h.game_name}</h3>
+                    <span className="small muted num">#{h.position} en el ranking</span>
+                  </div>
+                  <RatingChart points={h.puntos} />
+                </div>
+              ))}
+          </div>
+        </section>
+      )}
 
       {rivals.length > 0 && (
         <section className="section wrap stack">

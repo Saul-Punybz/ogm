@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getGames, type Game } from "@/lib/queries";
 import { VoteBlock } from "@/components/vote";
+import { GameVisual } from "@/components/game-art";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Juegos y rankings" };
@@ -13,14 +14,17 @@ const MODO: Record<string, string> = {
 
 function GameCard({ g }: { g: Game }) {
   return (
-    <Link href={`/juegos/${g.slug}`} className="card game-card">
-      <span className="format">
-        {MODO[g.mode]}
-        {g.team_size > 1 ? ` · ${g.team_size} por equipo` : ""}
-      </span>
-      <h3>{g.name}</h3>
-      {g.tagline && <p className="small muted">{g.tagline}</p>}
-      <p className="small muted">{g.platform}</p>
+    <Link href={`/juegos/${g.slug}`} className="card card-art">
+      <GameVisual slug={g.slug} mode={g.mode} name={g.name} archive={g.stage === "archivo"} />
+      <div className="card-body">
+        <span className="format">
+          {MODO[g.mode]}
+          {g.team_size > 1 ? ` · ${g.team_size} por equipo` : ""}
+        </span>
+        <h3>{g.name}</h3>
+        {g.tagline && <p className="small muted">{g.tagline}</p>}
+        <p className="small muted">{g.platform}</p>
+      </div>
     </Link>
   );
 }

@@ -33,6 +33,15 @@ revisada en el navegador.
   variables `OGM_*`: si no están, el sitio dice "por anunciar". Probado: 16 rutas
   200, votación (votar, cambiar, anónimo, juego no candidato), vista a 500 px.
 
+- **Contenido y vida** (tanda 4): escenario en la portada con cuenta regresiva
+  al próximo torneo y reproductor de Twitch (solo en pantallas ≥ 860 px, por la
+  regla de 400×300 de Twitch); cambia solo a "En vivo ahora" con el evento
+  `Twitch.Embed.ONLINE` — **verificado en navegador real** con un canal en vivo.
+  Imágenes oficiales de los 10 juegos (de Wikipedia, fuentes en
+  `public/juegos/FUENTES.md`) sobre arte propio de OGM. "Momentos de la liga"
+  calculados de los datos (jugador del mes, sorpresa, más bajas, racha).
+  Gráfica de rating en cada perfil. Fotos de Discord o iniciales en rankings.
+
 ## Decisiones tomadas
 
 - **Temporada 1: Free Fire, Clash Royale y Brawlhalla** (uno por formato, gratis,
@@ -78,6 +87,12 @@ OGM todavía no tiene canales propios (21 sep 2026). Cuando existan, llenar en
 
 Mientras tanto el sitio dice "por anunciar" y el login funciona con la ruta de
 desarrollo `/api/auth/dev?name=...`.
+
+## Imágenes de los juegos
+
+Uso de identificación, sin monetizar (decisión de Saul, 21 sep 2026). Antes de
+vender auspicios con el sitio, revisar la política de contenido de fans de cada
+editora. Son de baja resolución (Wikipedia limita las de uso justo).
 
 ## Notas de operación
 

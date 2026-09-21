@@ -228,7 +228,7 @@ footer.site .small { color: var(--muted); max-width: 46ch; }
 .promise div { background: var(--ink); padding: 14px 16px; }
 .promise b { display: block; font-family: var(--display); font-size: 1.05rem; color: var(--cream); }
 .promise span { font-size: 0.85rem; color: var(--muted); }
-.game-card .format { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--peri); }
+.format { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--peri); }
 .soon { font-size: 0.85rem; color: var(--muted); border: 1px dashed var(--line); padding: 12px 14px; }
 .checklist { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
 .checklist li { padding-left: 22px; position: relative; font-size: 0.95rem; }
@@ -237,3 +237,66 @@ footer.site .small { color: var(--muted); max-width: 46ch; }
 @media (max-width: 720px) {
   .promise { grid-template-columns: 1fr; }
 }
+
+/* ---------- escenario (portada) ---------- */
+.stage { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.stage-split { grid-template-columns: minmax(300px, 1fr) minmax(420px, 1.45fr); }
+.stage-card { background: var(--surface); padding: 22px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.stage-title { font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.05; }
+.stage-player { background: #000; aspect-ratio: 16 / 9; min-height: 300px; }
+.stage-player #ogm-twitch, .stage-player iframe { width: 100%; height: 100%; display: block; border: 0; }
+.countdown { display: flex; gap: 10px; }
+.countdown div { background: var(--ink); border: 1px solid var(--line); padding: 10px 14px; min-width: 76px; text-align: center; }
+.countdown b { display: block; font-size: 2rem; line-height: 1; color: var(--cream); }
+.countdown span { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--peri); }
+
+/* ---------- arte de juegos ---------- */
+.game-art { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.card-art { padding: 0; overflow: hidden; gap: 0; }
+.card-art .card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; }
+.game-hero-art { border: 1px solid var(--line); max-height: 240px; object-fit: cover; }
+
+/* ---------- avatares ---------- */
+.avatar { border-radius: 50%; object-fit: cover; flex: 0 0 auto; display: inline-block; vertical-align: middle; }
+.avatar-initials { display: inline-flex; align-items: center; justify-content: center; font-family: var(--display); color: var(--cream); letter-spacing: 0.02em; }
+.who { display: flex; align-items: center; gap: 10px; }
+.who > span { min-width: 0; }
+
+/* ---------- momentos ---------- */
+.moments { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.moment { background: var(--surface); border: 1px solid var(--line); padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+.moment .big { font-family: var(--display); font-size: 2.1rem; line-height: 1; color: var(--flare); font-variant-numeric: tabular-nums; }
+.moment h3 { font-size: 1.05rem; }
+
+/* ---------- grafica de rating ---------- */
+.chart { border: 1px solid var(--line); background: var(--surface); padding: 8px 8px 4px; max-width: 640px; }
+.chart svg { display: block; width: 100%; height: auto; }
+.chart-grid { stroke: var(--line-soft); stroke-width: 1; }
+.chart-base { stroke: var(--peri); stroke-opacity: 0.45; stroke-dasharray: 4 4; }
+.chart-label { fill: var(--muted); font-family: var(--mono); font-size: 10px; }
+.chart-value { fill: var(--cream); font-family: var(--mono); font-size: 13px; font-weight: 600; }
+.chart-line { fill: none; stroke: var(--flare); stroke-width: 2.5; stroke-linejoin: round; }
+.chart-line-down { stroke: var(--peri); }
+.chart-area { fill: var(--flare); fill-opacity: 0.1; }
+.chart-area-down { fill: var(--peri); }
+.chart-dot { fill: var(--cream); }
+
+@media (max-width: 859px) {
+  .stage-split { grid-template-columns: 1fr; }
+}
+
+/* ---------- imagen de juego sobre el arte ---------- */
+.gv { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--navy); }
+.gv-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.gv-wide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.gv-cover {
+  position: absolute; right: 7%; top: 8%; height: 84%; width: auto;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55); border: 1px solid rgba(240, 238, 223, 0.18);
+}
+.gv-logo {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  max-width: 64%; max-height: 62%; width: auto; height: auto;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.6));
+}
+.gv-hero { border: 1px solid var(--line); max-height: 320px; aspect-ratio: auto; height: clamp(180px, 30vw, 320px); }
+.stage-card .pill { align-self: flex-start; }

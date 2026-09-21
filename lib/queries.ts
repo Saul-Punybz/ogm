@@ -26,6 +26,7 @@ export interface RankRow {
   podiums: number;
   team_name: string | null;
   team_slug: string | null;
+  avatar_url: string | null;
 }
 
 export interface TournamentRow {
@@ -81,7 +82,7 @@ export function getRanking(gameId: number, limit = 50) {
   return q<RankRow>(
     // La escuadra sale por subconsulta, no por join: un jugador puede estar en
     // varios equipos y el join lo duplicaba en la tabla.
-    `SELECT r.player_id, p.tag, p.town, p.is_example, r.display, r.matches, r.wins, r.losses, r.podiums,
+    `SELECT r.player_id, p.tag, p.town, p.is_example, p.avatar_url, r.display, r.matches, r.wins, r.losses, r.podiums,
             (SELECT tm.name FROM team_players tp JOIN teams tm ON tm.id = tp.team_id
               WHERE tp.player_id = r.player_id AND tm.game_id = r.game_id LIMIT 1) AS team_name,
             (SELECT tm.slug FROM team_players tp JOIN teams tm ON tm.id = tp.team_id
@@ -256,6 +257,7 @@ export function getPlayer(tag: string) {
 
 export function getPlayerRatings(playerId: number) {
   return q<{
+    game_id: number;
     game_slug: string;
     game_name: string;
     game_short: string;
@@ -267,7 +269,7 @@ export function getPlayerRatings(playerId: number) {
     podiums: number;
     position: number;
   }>(
-    `SELECT g.slug AS game_slug, g.name AS game_name, g.short_name AS game_short, g.mode,
+    `SELECT g.id AS game_id, g.slug AS game_slug, g.name AS game_name, g.short_name AS game_short, g.mode,
             r.display, r.matches, r.wins, r.losses, r.podiums,
             (SELECT COUNT(*) + 1 FROM ratings r2
               WHERE r2.game_id = r.game_id AND r2.display > r.display)::int AS position
@@ -373,8 +375,8 @@ export function getTeam(slug: string) {
 }
 
 export function getTeamRoster(teamId: number) {
-  return q<{ tag: string; town: string | null; display: number | null }>(
-    `SELECT p.tag, p.town, r.display
+  return q<{ tag: string; town: string | null; display: number | null; avatar_url: string | null }>(
+    `SELECT p.tag, p.town, r.display, p.avatar_url
        FROM team_players tp
        JOIN players p ON p.id = tp.player_id
        LEFT JOIN ratings r ON r.player_id = p.id
