@@ -61,6 +61,13 @@ revisada en el navegador.
   - Insignias y niveles (`lib/badges.ts`): 12 insignias calculadas de los datos,
     XP y 10 niveles. En campeones y en cada perfil (vitrina completa).
 
+- **En producción** (21 sep 2026): https://ogm-six.vercel.app — equipo Vercel
+  `example-pages-projects`, proyecto `ogm`, base **Neon** `ogm-db` (plan free,
+  iad1) vía Marketplace de Vercel. El build aplica el esquema y siembra solo si
+  la base está vacía (`vercel-build`). Clave del admin de producción en
+  `.admin-password` (local, fuera de git). Deploy: `vercel deploy --prod`.
+  Falta: `APP_URL` de producción y la app de Discord para el login real.
+
 ## Decisiones tomadas
 
 - **Temporada 1: Free Fire, Clash Royale y Brawlhalla** (uno por formato, gratis,
