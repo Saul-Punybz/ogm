@@ -14,6 +14,8 @@ export interface Fuente {
   /** YouTube: ID del canal (UC...). Twitch: nombre del canal. */
   id: string;
   filtro?: RegExp;
+  /** Video fijo de YouTube, en vez del mas reciente del canal. */
+  video?: { id: string; title: string; published: string };
   nota: string;
 }
 
@@ -51,12 +53,16 @@ export const ESCENA: Record<string, Fuente[]> = {
 };
 
 /**
- * Creadores invitados: streamers que aparecen en el sitio. Hoy es un EJEMPLO
- * pedido por Saul (21 sep 2026) para mostrar como se ve un creador en vivo; no
- * tiene relacion con OGM y va rotulado asi en pantalla.
+ * Creadores invitados: EJEMPLO pedido por Saul (21 sep 2026) para mostrar como
+ * se ve un creador en el sitio. No tiene relacion con OGM y va rotulado asi.
  */
 export const CREADORES: (Fuente & { etiqueta: string })[] = [
-  { plataforma: "twitch", canal: "twitch.tv/ironmouse", nombre: "ironmouse", id: "ironmouse",
-    etiqueta: "Creadora invitada · ejemplo",
-    nota: "Ejemplo de cómo se ve un creador en vivo en el sitio. No está afiliada a OGM." },
+  { plataforma: "youtube", canal: "@gilgasunrise", nombre: "Gilga Sunrise", id: "gilgasunrise",
+    video: {
+      id: "j_HQCzTKUiM",
+      title: "DMO: 3 horitas a Full viendo que farmear y levear y luego de Aniimo",
+      published: "",
+    },
+    etiqueta: "Creador invitado · ejemplo",
+    nota: "Ejemplo de un creador en español en el sitio. No está afiliado a OGM." },
 ];

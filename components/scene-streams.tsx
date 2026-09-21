@@ -6,7 +6,7 @@ import { TwitchPlayer } from "./twitch-player";
 
 /** Tarjeta de una fuente: el video destacado de YouTube o el canal de Twitch. */
 async function FuenteCard({ f, juego }: { f: Fuente; juego?: string }) {
-  const video = f.plataforma === "youtube" ? await videoDestacado(f.id, f.filtro) : null;
+  const video = f.plataforma === "youtube" ? (f.video ?? (await videoDestacado(f.id, f.filtro))) : null;
   if (f.plataforma === "youtube" && !video) return null;
 
   const url =
@@ -29,7 +29,7 @@ async function FuenteCard({ f, juego }: { f: Fuente; juego?: string }) {
         <b>{video ? video.title : f.nombre}</b>
         <span className="small muted">
           {f.nombre}
-          {video ? ` · ${fecha(video.published)}` : ""}
+          {video?.published ? ` · ${fecha(video.published)}` : ""}
         </span>
         <span className="small muted">{f.nota}</span>
         <a href={url} target="_blank" rel="noreferrer" className="small">

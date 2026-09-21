@@ -50,7 +50,7 @@ export default async function EnVivo({
 
       <section className="wrap stack" style={{ paddingBottom: 36 }}>
         {channel && site.twitch ? (
-          <TwitchLive channel={channel} url={site.twitch} />
+          <TwitchLive channel={channel} url={site.twitch} example={site.twitchExample} />
         ) : (
           <p className="note">Canal de Twitch por anunciar.</p>
         )}

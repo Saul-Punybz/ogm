@@ -19,7 +19,7 @@ interface TwitchGlobal {
   };
 }
 
-export function TwitchLive({ channel, url }: { channel: string; url: string }) {
+export function TwitchLive({ channel, url, example = false }: { channel: string; url: string; example?: boolean }) {
   const [wide, setWide] = useState(false);
   const [sdk, setSdk] = useState(false);
   const [live, setLive] = useState<boolean | null>(null);
@@ -57,6 +57,7 @@ export function TwitchLive({ channel, url }: { channel: string; url: string }) {
       <div className="row-between">
         <span className={live ? "pill pill-live" : "pill"}>
           {live === null ? `twitch.tv/${channel}` : live ? "En vivo ahora" : "Fuera del aire"}
+          {example ? " · canal de ejemplo" : ""}
         </span>
         <a href={url} target="_blank" rel="noreferrer" className="small">
           Abrir en Twitch →

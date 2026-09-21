@@ -92,7 +92,7 @@ export default function Tv() {
           </div>
         </div>
         {channel && site.twitch ? (
-          <TwitchLive channel={channel} url={site.twitch} />
+          <TwitchLive channel={channel} url={site.twitch} example={site.twitchExample} />
         ) : (
           <p className="note">Canal por anunciar.</p>
         )}

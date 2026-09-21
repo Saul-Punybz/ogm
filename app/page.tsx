@@ -55,6 +55,7 @@ export default async function Home() {
       <section className="wrap" style={{ paddingBottom: 36 }}>
         <LiveStage
           twitchUrl={site.twitch}
+          example={site.twitchExample}
           next={
             next
               ? {

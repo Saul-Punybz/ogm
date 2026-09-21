@@ -6,6 +6,8 @@
 export const site = {
   kick: process.env.OGM_KICK_URL || null,
   twitch: process.env.OGM_TWITCH_URL || null,
+  /** El canal de Twitch es de ejemplo (no es de OGM): el sitio lo dice en pantalla. */
+  twitchExample: process.env.OGM_TWITCH_EXAMPLE === "1",
   discordInvite: process.env.OGM_DISCORD_INVITE || null,
   contactEmail: process.env.OGM_CONTACT_EMAIL || null,
 };

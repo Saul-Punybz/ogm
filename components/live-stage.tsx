@@ -53,8 +53,10 @@ export function LiveStage({
   twitchUrl,
   next,
   fechaTexto,
+  example = false,
 }: {
   twitchUrl: string | null;
+  example?: boolean;
   next: Next | null;
   fechaTexto: string | null;
 }) {
@@ -108,9 +110,13 @@ export function LiveStage({
       <div className="stage-card">
         {live ? (
           <>
-            <span className="pill pill-live">En vivo ahora</span>
-            <h2 className="stage-title">Estamos transmitiendo</h2>
-            <p className="muted small">Entra al chat y mira la liga en directo.</p>
+            <span className="pill pill-live">{example ? "En vivo · canal de ejemplo" : "En vivo ahora"}</span>
+            <h2 className="stage-title">{example ? `${channel} está en vivo` : "Estamos transmitiendo"}</h2>
+            <p className="muted small">
+              {example
+                ? "Canal de ejemplo para mostrar cómo se ve la portada durante una transmisión. No está afiliado a OGM."
+                : "Entra al chat y mira la liga en directo."}
+            </p>
           </>
         ) : next ? (
           <>
