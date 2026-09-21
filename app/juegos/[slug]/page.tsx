@@ -9,6 +9,8 @@ import {
 import { fecha } from "@/lib/format";
 import { GameVisual } from "@/components/game-art";
 import { Avatar } from "@/components/avatar";
+import { SceneStreams } from "@/components/scene-streams";
+import { ESCENA } from "@/data/streams";
 
 export const dynamic = "force-dynamic";
 
@@ -145,6 +147,16 @@ export default async function JuegoPage({ params }: { params: Promise<{ slug: st
           </div>
         )}
       </section>
+
+      {ESCENA[game.slug] && (
+        <section className="section wrap stack">
+          <div className="stack-sm">
+            <h2>Mira la escena</h2>
+            <p className="muted small">Transmisiones oficiales de {game.name}.</p>
+          </div>
+          <SceneStreams juegos={[game.slug]} />
+        </section>
+      )}
 
       <section className="section wrap stack">
         <h2>Torneos</h2>

@@ -7,6 +7,7 @@ import { VoteBlock } from "@/components/vote";
 import { LiveStage } from "@/components/live-stage";
 import { GameVisual } from "@/components/game-art";
 import { Avatar } from "@/components/avatar";
+import { SceneStreams } from "@/components/scene-streams";
 
 export const dynamic = "force-dynamic";
 
@@ -188,6 +189,20 @@ export default async function Home() {
           </div>
         </section>
       )}
+
+      <section className="section wrap stack">
+        <div className="row-between">
+          <h2>La escena en vivo</h2>
+          <Link href="/en-vivo" className="small muted">
+            Todas las transmisiones →
+          </Link>
+        </div>
+        <SceneStreams
+          juegos={["free-fire", "brawlhalla", "clash-royale"]}
+          nombres={Object.fromEntries(games.map((g) => [g.slug, g.name]))}
+          max={3}
+        />
+      </section>
 
       <section className="section wrap stack">
         <div className="stack-sm">

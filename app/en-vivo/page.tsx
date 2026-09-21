@@ -3,6 +3,8 @@ import { site } from "@/lib/site";
 import { PLATAFORMAS } from "@/lib/platforms";
 import { topStreamedGames, twitchConfigured, type TopGame } from "@/lib/twitch";
 import { TwitchLive } from "@/components/twitch-live";
+import { SceneStreams } from "@/components/scene-streams";
+import { getGames } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "En vivo" };
@@ -31,6 +33,8 @@ export default async function EnVivo({
   const channel = channelFromUrl(site.twitch);
   const discordId = process.env.OGM_DISCORD_SERVER_ID || null;
   const { games, error } = await cargarTop();
+  const juegosLiga = await getGames();
+  const nombres = Object.fromEntries(juegosLiga.map((g) => [g.slug, g.name]));
   const lista = (activa ? games.filter((g) => g.plataformas.includes(activa.slug)) : games).slice(0, 18);
 
   return (
@@ -50,6 +54,20 @@ export default async function EnVivo({
         ) : (
           <p className="note">Canal de Twitch por anunciar.</p>
         )}
+      </section>
+
+      <section className="section wrap stack">
+        <div className="stack-sm">
+          <h2>La escena en vivo</h2>
+          <p className="muted small">
+            Las transmisiones oficiales de los juegos de la liga: la más reciente de cada canal, se
+            actualiza sola cada hora.
+          </p>
+        </div>
+        <SceneStreams
+          juegos={["free-fire", "clash-royale", "brawlhalla", "cod-mobile", "stumble-guys"]}
+          nombres={nombres}
+        />
       </section>
 
       <section className="section wrap stack">
