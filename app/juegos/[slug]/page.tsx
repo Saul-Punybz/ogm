@@ -38,7 +38,7 @@ export default async function JuegoPage({ params }: { params: Promise<{ slug: st
           {game.platform} · {game.mode === "br" ? "Battle royale" : game.mode === "squad" ? "Por equipos" : "Individual"}
         </div>
         <h1>{game.name}</h1>
-        <GameVisual slug={game.slug} mode={game.mode} name={game.name} archive={game.stage === "archivo"} className="gv-hero" />
+        <GameVisual slug={game.slug} mode={game.mode} name={game.name} archive={game.stage === "archivo"} variant="juego" className="gv-hero" />
         {game.tagline && <p className="muted">{game.tagline}</p>}
         {game.stage === "archivo" && (
           <p className="banner">

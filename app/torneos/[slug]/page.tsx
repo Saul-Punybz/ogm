@@ -27,7 +27,7 @@ export default async function TorneoPage({ params }: { params: Promise<{ slug: s
           <Link href={`/juegos/${t.game_slug}`}>{t.game_name}</Link> · {fecha(t.starts_at)}
         </div>
         <h1>{t.name}</h1>
-        <GameVisual slug={t.game_slug} mode={t.game_mode} name={t.game_name} archive={t.is_archive} className="gv-hero" />
+        <GameVisual slug={t.game_slug} mode={t.game_mode} name={t.game_name} archive={t.is_archive} variant="torneo" className="gv-hero" />
         <p className="muted">
           {t.venue} · {t.format}
         </p>

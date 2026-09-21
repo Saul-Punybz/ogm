@@ -199,9 +199,18 @@ export function GameArt({
  *   logo  -> logo con transparencia, centrado sobre el arte
  *   wide  -> imagen horizontal, ocupa todo el cuadro
  */
-const IMAGENES: Record<string, { src: string; kind: "cover" | "logo" | "wide" }> = {
+type Img = { src: string; kind: "cover" | "logo" | "wide"; position?: string };
+
+const IMAGENES: Record<string, Img & { juego?: Img; torneo?: Img }> = {
   "free-fire": { src: "/juegos/free-fire.jpg", kind: "cover" },
-  "clash-royale": { src: "/juegos/clash-royale.png", kind: "logo" },
+  // Clash Royale: imagenes que dio Saul (21 sep 2026), mejores que el logo de Wikipedia.
+  "clash-royale": {
+    src: "/juegos/clash-royale/poster.jpg",
+    kind: "cover",
+    // En cabeceras van como cuadro sobre el arte: estiradas a lo ancho se ven borrosas.
+    juego: { src: "/juegos/clash-royale/versus.jpg", kind: "cover" },
+    torneo: { src: "/juegos/clash-royale/rey.jpg", kind: "cover" },
+  },
   brawlhalla: { src: "/juegos/brawlhalla.jpg", kind: "cover" },
   "mobile-legends": { src: "/juegos/mobile-legends.png", kind: "logo" },
   "cod-mobile": { src: "/juegos/cod-mobile.png", kind: "logo" },
@@ -212,26 +221,39 @@ const IMAGENES: Record<string, { src: string; kind: "cover" | "logo" | "wide" }>
   ssf4: { src: "/juegos/ssf4.jpg", kind: "cover" },
 };
 
+/**
+ * variant: "card" para tarjetas; "juego" y "torneo" para cabeceras, que usan
+ * una imagen grande propia si el juego la tiene.
+ */
 export function GameVisual({
   slug,
   mode,
   name,
   archive = false,
+  variant = "card",
   className,
 }: {
   slug: string;
   mode: string;
   name: string;
   archive?: boolean;
+  variant?: "card" | "juego" | "torneo";
   className?: string;
 }) {
-  const img = IMAGENES[slug];
+  const base = IMAGENES[slug];
+  const img: Img | undefined = (variant !== "card" && base?.[variant]) || base;
   return (
     <div className={`gv ${className ?? ""}`}>
       {img?.kind !== "wide" && <GameArt slug={slug} mode={mode} archive={archive} className="gv-art" />}
       {img && (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={img.src} alt={name} className={`gv-${img.kind}`} loading="lazy" />
+        <img
+          src={img.src}
+          alt={name}
+          className={`gv-${img.kind}`}
+          style={img.position ? { objectPosition: img.position } : undefined}
+          loading="lazy"
+        />
       )}
     </div>
   );

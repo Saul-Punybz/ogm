@@ -7,7 +7,6 @@ Son logos o portadas oficiales (propiedad de cada editora), usadas en Wikipedia 
 | Juego | Archivo | Tamaño | Fuente |
 | --- | --- | --- | --- |
 | free-fire | `free-fire.jpg` | 350×492 | https://upload.wikimedia.org/wikipedia/pt/a/a8/Free_fire_battlegrounds.jpg |
-| clash-royale | `clash-royale.png` | 232×109 | https://upload.wikimedia.org/wikipedia/en/b/b8/Clash_Royale_game_logo.png |
 | brawlhalla | `brawlhalla.jpg` | 276×361 | https://upload.wikimedia.org/wikipedia/en/2/2d/Brawlhalla_BoxArt.jpg |
 | mobile-legends | `mobile-legends.png` | 600×340 | https://upload.wikimedia.org/wikipedia/commons/7/78/MobileIsLegends.png |
 | cod-mobile | `cod-mobile.png` | 180×180 | https://upload.wikimedia.org/wikipedia/en/0/07/CODM_logo.png |
@@ -16,3 +15,13 @@ Son logos o portadas oficiales (propiedad de cada editora), usadas en Wikipedia 
 | mw2 | `mw2.png` | 261×380 | https://upload.wikimedia.org/wikipedia/en/5/52/Call_of_Duty_Modern_Warfare_2_%282009%29_cover.png |
 | halo-reach | `halo-reach.png` | 256×326 | https://upload.wikimedia.org/wikipedia/en/5/5c/Halo-_Reach_box_art.png |
 | ssf4 | `ssf4.jpg` | 219×262 | https://upload.wikimedia.org/wikipedia/en/4/43/SuperSF4.jpg |
+
+## Clash Royale (dadas por Saul, 21 sep 2026)
+
+| Archivo | Tamaño | Uso |
+| --- | --- | --- |
+| `clash-royale/poster.jpg` | 335×597 | Tarjeta del juego |
+| `clash-royale/versus.jpg` | 447×447 | Cabecera de la página del juego |
+| `clash-royale/rey.jpg` | 450×600 | Cabecera de los torneos |
+
+Arte oficial de Supercell. Mismo criterio: identificación, sin monetizar.
