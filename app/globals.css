@@ -384,7 +384,8 @@ footer.site .small { color: var(--muted); max-width: 46ch; }
 .tv-card-top span { font-family: var(--display); font-size: 1.6rem; color: var(--cream); opacity: 0.85; }
 
 /* ---------- transmisiones de la escena ---------- */
-.streams { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.streams { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 14px; }
+/* Twitch exige minimo 400 px de ancho: 420 deja margen. */
 .stream { background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; }
 .stream-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 5px; }
 .stream-body b { line-height: 1.3; }
