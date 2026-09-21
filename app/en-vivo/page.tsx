@@ -67,6 +67,7 @@ export default async function EnVivo({
         <SceneStreams
           juegos={["free-fire", "clash-royale", "brawlhalla", "cod-mobile", "stumble-guys"]}
           nombres={nombres}
+          creadores
         />
       </section>
 

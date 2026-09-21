@@ -49,3 +49,14 @@ export const ESCENA: Record<string, Fuente[]> = {
       nota: "El canal oficial de Scopely." },
   ],
 };
+
+/**
+ * Creadores invitados: streamers que aparecen en el sitio. Hoy es un EJEMPLO
+ * pedido por Saul (21 sep 2026) para mostrar como se ve un creador en vivo; no
+ * tiene relacion con OGM y va rotulado asi en pantalla.
+ */
+export const CREADORES: (Fuente & { etiqueta: string })[] = [
+  { plataforma: "twitch", canal: "twitch.tv/ironmouse", nombre: "ironmouse", id: "ironmouse",
+    etiqueta: "Creadora invitada · ejemplo",
+    nota: "Ejemplo de cómo se ve un creador en vivo en el sitio. No está afiliada a OGM." },
+];

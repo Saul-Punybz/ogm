@@ -1,4 +1,4 @@
-import { ESCENA, type Fuente } from "@/data/streams";
+import { ESCENA, CREADORES, type Fuente } from "@/data/streams";
 import { videoDestacado } from "@/lib/youtube";
 import { fecha } from "@/lib/format";
 import { YouTubeLite } from "./youtube-lite";
@@ -45,18 +45,22 @@ export async function SceneStreams({
   juegos,
   nombres = {},
   max,
+  creadores = false,
 }: {
   juegos: string[];
   nombres?: Record<string, string>;
   max?: number;
+  /** Agrega los creadores invitados al principio. */
+  creadores?: boolean;
 }) {
-  const fuentes = juegos.flatMap((j) => (ESCENA[j] ?? []).map((f) => ({ f, j })));
+  const invitados = creadores ? CREADORES.map((f) => ({ f, j: f.etiqueta })) : [];
+  const fuentes = [...invitados, ...juegos.flatMap((j) => (ESCENA[j] ?? []).map((f) => ({ f, j: nombres[j] ?? j })))];
   const lista = max ? fuentes.slice(0, max) : fuentes;
   if (lista.length === 0) return null;
   return (
     <div className="streams">
       {lista.map(({ f, j }) => (
-        <FuenteCard key={`${j}-${f.id}`} f={f} juego={nombres[j]} />
+        <FuenteCard key={`${j}-${f.id}`} f={f} juego={j} />
       ))}
     </div>
   );

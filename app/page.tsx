@@ -201,6 +201,7 @@ export default async function Home() {
           juegos={["free-fire", "brawlhalla", "clash-royale"]}
           nombres={Object.fromEntries(games.map((g) => [g.slug, g.name]))}
           max={3}
+          creadores
         />
       </section>
 
