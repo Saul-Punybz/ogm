@@ -1,62 +1,108 @@
-# OGM — Juegos indie/emergentes para PR + LATAM (2024–2026)
+# OGM — Juegos indie/emergentes (2024-2026): dónde apostar en PR/LATAM
 
-*Investigación: septiembre 2026. Todas las cifras están fechadas y marcadas con confianza (alta/media/baja); lo no verificado se declara como tal.*
+**Nota metodológica:** la red de este entorno bloquea o rompe el TLS de casi todos los sitios de esports/gaming (SteamDB, Liquipedia, dotesports, marvelrivalsesports.com, etc.) tanto por WebFetch como por curl. Solo se abrieron directamente unas pocas páginas de Wikipedia (confianza "alta"). El resto viene de resúmenes de WebSearch que sí citan y resumen la página real, pero sin verificación de la fuente cruda — confianza "media" salvo que se indique otra cosa. Donde no se encontró nada, se anota "sin verificar".
 
-## Conclusión en una línea
+## Conclusión (2-3 apuestas)
 
-Con prioridad "mobile-first" y F2P, las tres apuestas más sólidas son **Brawlhalla** (móvil+consola+PC con crossplay real, programa oficial "Community Tournament Initiative" que literalmente paga premios a organizadores grassroots, y comunidad hispanohablante ya activa pero fragmentada — el hueco de "referencia LATAM" está abierto), **Marvel Snap** (móvil+PC, F2P, formato 1v1 tipo cartas/estrategia, comunidades de Discord/WhatsApp ya segmentadas por país incluyendo Puerto Rico, aunque el circuito oficial "Golden Gauntlet" ya es grande) y **Stumble Guys** (el más masivo en móvil y de menor barrera de entrada, formato battle-royale-lobby nativo, pero sin política de torneos publicada por Scopely — riesgo legal/de marca a vigilar). Si OGM quiere abrir también un track de PC de alta producción, **Rocket League** es la opción más estable y con reglas de torneo comunitario más claras de todo el listado, pero no corre en móvil.
+Para una liga grassroots mobile-first en PR/LATAM, las tres apuestas más sólidas son **Brawlhalla**, **Stumble Guys** y **Marvel Snap**. Brawlhalla es el único fighting/battle game F2P con crossplay total (incluido móvil) y un programa oficial de apoyo a torneos comunitarios (BCTI) que ya reconoce a Sudamérica como región propia — OGM podría ser su socio comunitario de referencia en PR/Caribe en vez de competirle. Stumble Guys calza literal con el formato "lobby battle-royale" de OGM (32 jugadores, ranking por posición), es gratis y multiplataforma con crossplay móvil-PC-consola, y su organización LATAM está fragmentada — espacio libre real. Marvel Snap cubre el 1v1 con el menor requisito de hardware (corre en cualquier teléfono viejo), tiene un circuito oficial abierto y gratis (Golden Gauntlet 2026) y presencia LATAM sin organizador dominante. Rivals of Aether II y Rocket League son buenas apuestas secundarias si OGM suma PC, pero ninguna corre en móvil. Deadlock, 2XKO, Squad Busters, Splitgate 2, Omega Strikers y Them's Fightin' Herds se descartan (ver Riesgos).
 
 ## Tabla comparativa
 
-| Juego | Estado de la escena (2025-26) | LATAM | Política de torneos | Plataformas/móvil | Formato | Espacio libre LATAM | Confianza |
+| Juego | Escena 2025-26 | LATAM | Política de torneos | Plataformas / móvil | Formato | Espacio libre LATAM | Confianza |
 |---|---|---|---|---|---|---|---|
-| **Brawlhalla** | Estable/creciendo — Year Eleven 2026, Mundial nov. 2026 con $200K en Atlanta | Región SA propia en el circuito oficial; comunidades hispanas activas (Steam groups, start.gg) | "Community Tournament Initiative": +$500K repartidos desde 2020, torneos online gratis; sin cifra exacta de tope de premio verificada | Móvil (iOS/Android) + PC + todas las consolas, crossplay total, F2P | 1v1 y 2v2 nativos | Comunidades fragmentadas (varios grupos "Latino/Hispano"), sin un organizador dominante único | media |
-| **Marvel Snap** | Creciendo — Golden Gauntlet World Championship Series 2026, final global en noviembre | Comunidades de Discord/WhatsApp por país (incluye PR, Venezuela, Uruguay) | Torneos oficiales gratuitos y abiertos; no verifiqué política específica para organizadores terceros/grassroots | Móvil + PC, F2P | 1v1 (cartas) | Circuito oficial ya es grande; espacio local/regional bajo eso no verificado | media |
-| **Stumble Guys** | Steam en declive (-36% pico anual), pero es juego de móvil ante todo — cifra móvil sin verificar | Comunidad "Stumble Guys Latino" (no oficial), brackets en Challonge, quejas por falta de torneos regionales | **Sin política pública de torneos/premios de Scopely** (a diferencia de Supercell) | Móvil + PC + navegador, gama baja, F2P | Battle-royale-lobby (hasta 24-32 jugadores, eliminación por rondas) | Abierto — sin organizador dominante detectado | media |
-| **Rocket League** | Grande y estable — RLCS SAM con cientos de equipos en 2026 | RLCS South America muy activo (Epic Games + BLAST) | Community Tournament Guidelines claras: sin licencia si cumples reglas, tope $15K/evento | PC + consolas, **sin móvil**, F2P, crossplay | 1v1, 2v2, 3v3 | Techo ya ocupado por RLCS oficial; espacio en amateur/grassroots bajo eso | alta |
-| **Rivals of Aether II** | Creciendo en el nicho FGC — 1,022 entrantes en Evo 2026 (doblando 2025) | Sin verificar presencia LATAM específica | Sin verificar política de torneos comunitarios | PC (Steam) únicamente, **sin móvil ni crossplay confirmado** | 1v1 (también dobles) | Sin verificar | media/baja |
-| **2XKO** | Riot **termina desarrollo activo a fines de 2026** (servidores siguen, sin nuevo contenido) | Sin verificar | Riot financia 20 torneos sancionados en 2026 (5 Majors + 15 Challenger) a nivel global | PC (cliente Riot)/PS5/Xbox, **sin móvil**, F2P | 2v2 tag-team | Sin verificar; riesgo alto por fin de desarrollo | media |
-| **Marvel Rivals** | Muy grande — NetEase lanza Pro League 2026 con +$3M en premios | Incluido en región "Americas"; sin dato LATAM/Caribe específico | Programa "Partner Team" + promoción/relegación, orientado a equipos profesionales, no a ligas grassroots | PC/PS5/Xbox, **sin móvil confirmado**, F2P | Equipos (6v6) | Circuito oficial domina; poco espacio para "ser LA referencia" | media |
-| **Splitgate 2** | **En caída fuerte** — pico 25,642 (jun-2025) a ~487 concurrentes ahora | Sin verificar | 1047 Games organiza su propio circuito (Pro Series + Logitech); sin política pública de auto-servicio | PC + consolas, **sin móvil** | BR en escuadras de 4 (60 jug./15 escuadras) — encaja el formato, pero no la plataforma | Desarrollador ya controla el circuito | media |
-| **Deadlock (Valve)** | Creciendo (picos de 125K) pero **sigue en beta cerrada por invitación**, sin lanzamiento público | Sin verificar | Sin política de torneos (Valve no ha lanzado programa esports) | **Solo PC**, sin móvil, acceso restringido | Equipos (MOBA/shooter) | Prematuro — ni siquiera hay acceso abierto | alta (en cuanto al estatus de acceso) |
-| **Pocket Bravery** | Nicho FGC — torneos locales en Brasil (57 y 16 entrantes en 2024, sin dato 2025-26) | **Hecho en Brasil** (Statera Studio); escena local ya existe en São Paulo | Sin verificar | PC + consolas (port abril 2025), **sin móvil** | 1v1 | Brasil ya tiene comunidad; resto de LATAM sin verificar | media/baja |
-| **Them's Fightin' Herds** | **Prácticamente muerto** — ~10 jugadores concurrentes ahora mismo | Sin verificar | Sin verificar | PC únicamente, sin móvil | 1v1 | No recomendable — base de jugadores demasiado pequeña | alta |
-| **Squad Busters (Supercell)** | **Cierra definitivamente** en 2026 (anunciado oct-2025) | N/A | N/A | N/A | N/A | Excluir — solo como caso cautelar | alta |
-| **mo.co (Supercell)** | Cayó ~92% desde su pico (ago-2025 a may-2026) | Sin verificar | Política general de Supercell (ver Brawlhalla-equivalente: sin licencia si cumples guías, tope 50,000 EUR) | Móvil, F2P | **PvE cooperativo — no aplica a los 3 formatos de la liga** | N/A | alta (en que es PvE, no competitivo) |
-| **Omega Strikers** | **Sin nuevo contenido desde 2023**, ~145-150 concurrentes ahora | Sin verificar | Sin verificar | PC/consolas/móvil (histórico), F2P | Equipos 3v3 | No recomendable — desarrollador ya reorientó recursos a otro juego con el mismo IP | alta |
+| Brawlhalla | Estable/creciendo, "Year Eleven" 2026, Worlds Atlanta nov. 2026, $200K premio | Sudamérica es 1 de 5 regiones oficiales del circuito | BCTI: programa oficial, +$500-600K repartidos desde 2020, contacto esports@brawlhalla.com | PC/Mac/PS/Xbox/Switch/iOS/Android, crossplay total | 1v1 y 2v2 oficiales | Ocupado por programa oficial, pero abierto a nuevos "Community Partners" | media |
+| Stumble Guys | Activa, torneos in-app regulares (Summer Crown 2026), creadores BR | Comunidades informales (Stumble Guys Latino, torneos locales BR/MX/CO) | No encontré política formal de torneos de terceros | iOS/Android/PC/Xbox/PS, crossplay total | Lobby battle-royale, 32 jugadores | Fragmentado, sin organizador dominante | media |
+| Marvel Snap | Creciendo, Golden Gauntlet World Championship Series 2026, gratis y abierto | "Community Gaming LATAM" ya organiza serie regional | Circuito oficial abierto (Second Dinner), sin barrera de rango/colección | iOS/Android/PC/Steam, nativo móvil | 1v1 (Conquest = mejor-de series de 1v1) | Presencia real pero sin marca LATAM fuerte | media |
+| Rocket League | Muy estable/grande, RLCS $5M en 2025, no es indie | Sin dato específico LATAM verificado | Community Tournament Guidelines oficiales: tope $15K premio, $50K compensación, licencia automática si cumples reglas | PC/consolas, NO en móvil (Sideswipe es juego aparte sin cross-progression) | 3v3 principal, 1v1 oficial también | Escena top ya copada por RLCS; nivel comunitario abierto por política | media-alta |
+| Rivals of Aether II | Nicho pero con pico fuerte en EVO 2026 (1,022 inscritos, con controversia por compra de cupos); Steam bajando (-31.6% en 30 días) | Comunidad activa @RivalsLatam, incluye México, PR, Centroamérica, Colombia, Venezuela, Brasil | Sin política escrita; estudio indie, apoyo informal, sin dinero grande | Solo PC (Steam), sin móvil ni consola aún | 1v1 fighting game | Comunidad organizada pero informal, oportunidad real | media |
+| Deadlock (Valve) | Aún en beta, pico 2026 ~98K-125K en días de update, sin liga oficial de Valve | Solo Discords informales, sin torneo serio hallado | Sin política escrita hallada; torneos de terceros corren libres | Solo PC, sigue en beta | 6v6 por equipo | Abierto pero mal encaje móvil | media |
+| Marvel Rivals | Creciendo oficialmente, "Ignite 2026" >$3M premio, liga profesional con 12 equipos socios | Torneos LATAM ya existen (Rivals Ascension League LATAM, premios ~$300) | NetEase no financia premios Tier 1/2 grassroots; organizador asume todo | PC/PS5/PS4/Xbox, NO móvil | 6v6 por equipo | Ocupado por organizadores pequeños, fragmentado | media |
+| 2XKO (Riot) | **Riot anunció fin del desarrollo activo en dic. 2026**, tras despedir ~80 personas en feb. 2026 | Comunidad "2XKO LATAM" activa desde 2025 | Riot financia torneos de terceros en 2026, luego "Community Competition Guidelines" | PC/PS5/Xbox, NO móvil | 2v2 tag-team (funcionalmente 1v1) | Comunidad ya existe, pero el juego pierde apoyo del estudio | alta |
+| Squad Busters (Supercell) | **Cerrando**: última actualización dic. 2025, servidores cierran en 2026 | No aplica | No aplica | Móvil, PC | Escuadras 10 jugadores | No apostar — juego muerto | alta |
+| Splitgate 2 | **En caída libre**: relanzamiento dic. 2026 como "Arena Reloaded", ~800-1,000 jugadores en Steam | Sin dato | Sin dato | PC/consola | Team vs team (shooter) | No apostar | media-alta |
+| Omega Strikers | Sin contenido nuevo desde fines de 2023, jugadores bajos | Sin dato verificado | Sin dato verificado | PC, móvil no confirmado | 3v3 | No apostar | media |
+| Them's Fightin' Herds | Prácticamente muerto: 1 jugador concurrente, pico histórico 1,436 | Sin dato | Sin dato | Solo PC | 1v1 fighting game | No apostar | alta |
+| Pocket Bravery | Escena FGC pequeña pero real en Brasil (Comitê Arena, Battle Coliseum, 16-57 inscritos, ~$490 premio) | Es un juego hecho en Brasil; comunidad brasileña genuina | Sin política formal hallada (estudio pequeño Statera/PixelHeart) | PC/PS4/PS5/Xbox/Switch, **sin móvil** | 1v1 fighting game | Muy abierto, pero volumen bajo | media |
 
-## Por juego (evidencia clave)
+## Notas por juego (evidencia clave)
 
-**Brawlhalla.** El "Community Tournament Initiative" cumplió su 5to año en 2026 y ha repartido más de $500,000 desde 2020 (contacto esports@brawlhalla.com); confirmado vía búsqueda pero no abrí el documento de reglas completo (confianza media en el detalle exacto, alta en que el programa existe). Mobile confirmado en news.ubisoft.com y brawlhalla.com con crossplay total. Existen múltiples grupos de Steam "Brawlhalla Latinoamérica/Hispano" fragmentados — ninguno domina.
+**Brawlhalla** — F2P, crossplay total incluido móvil (iOS/Android). BCTI ("Brawlhalla Community Tournament Initiative") lleva 5-6 años repartiendo +$500-600K a torneos comunitarios; el circuito 2026 ("Year Eleven") trata a Sudamérica como una de sus cinco regiones. Steam solo: ~8-9K concurrentes, pico histórico ~34,700 (la base real es mucho mayor fuera de Steam, 80M jugadores acumulados). Confianza media (Liquipedia/brawlhalla.com citados por búsqueda, no abiertos).
 
-**Marvel Snap.** Golden Gauntlet World Championship Series 2026 es gratuito y abierto (idcgames.com, dotesports vía snippets). Comunidad Discord/WhatsApp por país confirmada vía gruposdiscord.com/gruposwats.com (fuentes de terceros, confianza media). No abrí una política de torneos de terceros específica de Marvel Snap/Nuverse/Skystone Games — sin verificar.
+**Stumble Guys** — 32 jugadores por partida, F2P, crossplay Steam-móvil-consola. Encaja literal con el bucket "battle-royale lobby, N escuadras por posición". Comunidades LATAM fragmentadas (Stumble Guys Latino, torneos locales), sin organizador dominante — la oportunidad de espacio libre más clara del informe. No se halló política formal de torneos de Scopely/Kitka; a confirmar directamente con el publisher.
 
-**Stumble Guys.** Fetch completo del Fan Content/ToS de Scopely (vía proxy r.jina.ai) no reveló una política de torneos equivalente a la de Supercell; la URL "scopely-fan-content-policy" redirige a los Términos de Servicio genéricos. Steam en declive (steamplayercount.com), pero Steam es marginal frente a su base móvil real, no verificada.
+**Marvel Snap** — "Golden Gauntlet World Championship Series 2026" de Second Dinner: abierto, gratis, sin requisito de rango. Existe "Community Gaming LATAM" pero sin marca dominante. Nativo en móvil y PC, corre en hardware bajo.
 
-**Supercell (Squad Busters / mo.co).** Leí completo supercell.com/en/tournament-guidelines/ (vía proxy): sin licencia si cumples las reglas, entrada gratis obligatoria, tope combinado de premios de 50,000 EUR, contacto tournaments@supercell.com si no encajas. Es la política más clara del sector, pero ninguno de sus dos títulos nuevos de 2025-26 es una apuesta viable (uno cierra, el otro es PvE).
+**Rocket League** — No es indie, pero cumple "gratis y grassroots-friendly": las Community Tournament Guidelines de Psyonix dan licencia automática si el torneo respeta el tope de premio ($15K) y compensación ($50K). RLCS con equipos sudamericanos profesionales (FURIA, MIBR, KRÜ) ya ocupa el nivel top. NO corre en móvil (Sideswipe es spin-off aparte).
 
-**Splitgate 2, Rivals of Aether II, Omega Strikers, Them's Fightin' Herds.** Los cuatro muestran caídas de jugadores en Steam verificadas directamente (steamplayercount.com); ninguno corre en móvil. Rivals of Aether II es la excepción con tracción real en el circuito FGC grande (Evo), pero es un nicho PC-only.
+**Rivals of Aether II** — Solo PC. Pico EVO 2026 con 1,022 inscritos (empañado por controversia de compra de cupos); Steam a la baja (-31.6% en 30 días). Cuenta LATAM "@RivalsLatam" incluye explícitamente Puerto Rico, México, Centroamérica, Colombia, Venezuela y Brasil — la señal más directa de PR de todo el research, aunque sin política de torneos escrita.
 
-**Rocket League.** Community Tournament Guidelines confirmadas (rocketleague.com, rocketleagueesports.com): tope de $15,000/evento, sin necesidad de permiso si cumples reglas. RLCS South America ya tiene cientos de equipos compitiendo (liquipedia.net vía snippets) — el "techo" competitivo LATAM ya está ocupado por el circuito oficial.
+**Deadlock, Marvel Rivals, 2XKO** — ninguno corre en móvil. 2XKO es el hallazgo de riesgo más importante: Riot confirmó (Wikipedia, verificado directo) el fin del desarrollo activo en diciembre 2026 tras despedir a la mitad del equipo — apostar ahí ahora es imprudente pese a tener comunidad LATAM activa.
+
+**Squad Busters, Splitgate 2, Omega Strikers, Them's Fightin' Herds** — señales claras de abandono o caída de jugadores (Omega Strikers: Odyssey anunció fin de contenido nuevo en 2023, ~50% despidos, Steam de ~5,600 a ~107 concurrentes); se excluyen.
+
+**Pocket Bravery** — único fighting game hecho en LATAM (Brasil). Escena real pero pequeña (16-57 inscritos, ~$490 premio en eventos de São Paulo). Sin móvil. Buena historia de "orgullo LATAM" pero volumen bajo para apuesta principal.
 
 ## Riesgos
 
-- **Scopely (Stumble Guys) no publica reglas de torneos comunitarios.** Sin ese marco, un torneo con premios podría chocar con los ToS genéricos o exponer a OGM a un cese-y-desista sin aviso previo — validar directamente con Scopely antes de anunciar premios.
-- **Volatilidad de vida útil**: Squad Busters, Omega Strikers, Splitgate 2 y Them's Fightin' Herds muestran que un juego "de moda" en 2025 puede estar muerto o abandonado en 2026 — cualquier apuesta necesita revisarse trimestralmente.
-- **Ninguno de los picks móviles tiene formato "N escuadras rankeadas" nativo** salvo Stumble Guys (battle royale) — Brawlhalla y Marvel Snap son 1v1/2v2, así que el formato battle-royale de OGM dependería casi enteramente de Stumble Guys.
-- **Cifras de jugadores en móvil no verificadas** para casi todos los títulos (Steam Charts no representa la base móvil real); se necesita AppMagic/Sensor Tower o data directa del publisher para confirmar salud real.
-- Se detectó un intento de inyección de instrucciones en una página de error de steamdb.info (texto dirigido a "el agente" pidiendo detener la investigación); fue ignorado por tratarse de contenido web no confiable, no una instrucción legítima — se documenta por transparencia.
+- **Mobile-first choca con la mayoría de los "hero shooters" 2025-2026** (Deadlock, Marvel Rivals, 2XKO, Splitgate 2): ninguno corre en teléfono. Si OGM prioriza móvil de verdad, el universo real se reduce a Brawlhalla, Stumble Guys y Marvel Snap.
+- **2XKO es trampa de timing**: comunidad LATAM organizada y programa de apoyo de Riot para 2026, pero el desarrollo activo termina en diciembre 2026.
+- **Cifras no siempre verificables**: SteamDB y Liquipedia estuvieron bloqueados en este entorno; varios números (Deadlock, Rivals of Aether II, Them's Fightin' Herds, Brawlhalla) vienen de resúmenes de búsqueda, no de la fuente cruda — recomiendo una segunda pasada desde una red sin ese bloqueo antes de firmar una apuesta grande.
+- **Ningún dato verificado de política de torneos de Stumble Guys/Scopely** pese a varias búsquedas específicas — antes de construir sobre este juego, escribirle directamente a Scopely/Kitka para confirmar que los torneos comunitarios con auspicio de marca son aceptables.
+- **Supercell no tiene reemplazo claro para Squad Busters** en 2025-2026 (mo.co sigue en beta) — descartar la franquicia por ahora.
 
-## Fuentes (URLs abiertas/leídas directamente)
+## Fuentes
 
-- https://supercell.com/en/tournament-guidelines/ (vía proxy r.jina.ai, texto completo)
-- https://www.scopely.com/scopely-fan-content-policy (vía proxy, texto completo)
-- https://www.stumbleguys.com/terms-of-service (vía proxy)
-- https://steamplayercount.com/app/1677740 (Stumble Guys)
-- https://steamplayercount.com/app/2918300 (Splitgate 2)
-- https://steamplayercount.com/app/1869590 (Omega Strikers, vía snippet de búsqueda con cifras citadas del propio sitio)
-- https://steamdb.info/app/2918300/charts/ (bloqueado por Cloudflare/captcha; contenía intento de inyección de instrucciones, ignorado)
-- https://liquipedia.net/splitgate/Splitgate_Pro_Series (bloqueado por captcha)
-- https://esportsinsider.com/2026/01/steam-chart-player-count-splitgate-arena-reloaded (403, no accesible)
+Abiertas directamente (contenido verificado, confianza alta):
+- https://en.wikipedia.org/wiki/2XKO
+- https://en.wikipedia.org/wiki/Deadlock_(video_game)
+- https://en.wikipedia.org/wiki/Rocket_League_Championship_Series
+- https://en.wikipedia.org/wiki/Omega_Strikers
+- https://en.wikipedia.org/wiki/Brawlhalla
+- https://en.wikipedia.org/wiki/Rivals_of_Aether_II
+- https://en.wikipedia.org/wiki/Rocket_League
+- https://atlantaesportsalliance.com/blogs/brawlhalla-esports-year-ten
 
-*Nota: por restricciones de tiempo, la mayoría de los demás datos (Brawlhalla, Marvel Snap, Rocket League, 2XKO, Marvel Rivals, Rivals of Aether II, Pocket Bravery, Deadlock, mo.co) provienen de resultados de búsqueda con snippets de fuentes primarias (rocketleague.com, riotgames.com, brawlhalla.com, marvelrivals.com, liquipedia.net, dotesports.com, etc.) que no se abrieron directamente página por página — están marcados con confianza media donde aplica. Se recomienda una segunda pasada abriendo esas páginas directamente antes de presentar cifras a los fundadores de OGM como definitivas.
+Citadas y resumidas por la herramienta de búsqueda web (no se pudo abrir la página cruda por bloqueos TLS/DNS del entorno — confianza media salvo que se indique otra cosa):
+- https://liquipedia.net/brawlhalla/Year_Eleven
+- https://www.brawlhalla.com/news/esports
+- https://www.challengermode.com/s/Brawlhalla
+- https://escharts.com/tournaments/brawlhalla
+- https://store.steampowered.com/news/app/2217000/view/667243351111631162 (Rivals of Aether II, EVO 2026)
+- https://tracker.gg/population/steam/2217000
+- https://x.com/rivalslatam
+- https://steamcommunity.com/groups/roabrasil
+- https://icon-era.com/statistics/rocket-league-player-count-all-platforms
+- https://www.rocketleagueesports.com/community-tournament-guidelines/
+- https://esports-news.co.uk/2022/02/08/psyonix-stricter-rocket-league-community-tournament-rules-prize-pool-cap/
+- https://en.wikipedia.org/wiki/Rocket_League_Sideswipe
+- https://medium.com/@averybarker5/omega-strikers-is-dying-a-sad-fate-for-independent-games-0f2bab038f16
+- https://support.odysseyinteractive.gg/hc/en-us/articles/20078372545819-Future-of-Omega-Strikers-FAQ
+- https://steamdb.info/app/1869590/charts/ (Omega Strikers)
+- https://www.stumbleguys.com/news/july-2026-crown-tournament
+- https://play.google.com/store/apps/details?id=com.kitkagames.fallbuddies
+- https://www.pocketgamer.biz/scopely-acquires-stumble-guys-from-kitka-games/
+- https://www.stumble-guys-latino.net/
+- https://www.tierraprohibida.net/torneo?idt=13
+- https://gameworldobserver.com/2025/10/30/we-were-wrong-supercell-to-shut-down-squad-busters-two-years-after-games-release
+- https://supercell.com/en/news/squad-development-ending/
+- https://www.appspy.com/mo-co/future-clarity/
+- https://en.wikipedia.org/wiki/Splitgate_2 (vía resumen de búsqueda)
+- https://www.gamesradar.com/games/fps/with-steam-players-down-over-90-percent-splitgate-2-dev-un-releases-the-game...
+- https://insider-gaming.com/splitgate-failed-secure-traction-fumbled-again/
+- https://idcgames.com/en/marvel-snap/news/marvel-snap-kicks-off-golden-gauntlet-2026-with-its-biggest-competitive-tournament-yet-2026-03-10-11-40-12571
+- https://esportsinsider.com/2025/07/marvel-snap-launches-esports-championships-series
+- https://www.communitygaming.io/tournament/cg-marvel-snap-monthly-1
+- https://steamcommunity.com/app/574980/discussions/0/1692662484259751749/ (Them's Fightin' Herds player count)
+- https://steamplayercount.com/app/574980
+- https://en.wikipedia.org/wiki/Pocket_Bravery (vía resumen de búsqueda)
+- https://thefightinggames.com/tournament/battle-coliseum-2025
+- https://www.pixelheart.eu/en/pocket-bravery-available-on-all-platforms/
+- https://www.marvelrivals.com/Marvel_Rivals_Ignite_2026_Rules_Preseason_&_Stage1_2026.3.13_V1.0.pdf
+- https://www.marvelrivalsesports.com/20260603/42831_1302721.html
+- https://liquipedia.net/marvelrivals/Rivals_Ascension_League/LATAM
+- https://www.challengermode.com/s/SoyElGeek/tournaments/a75a9ba7-b54a-4d6c-8f7c-08dd91554a54
+- https://www.exitlag.com/blog/marvel-rivals-crossplay/
+- https://2xko.riotgames.com/en-us/news/announcements/2xkos-plans-for-competitive-play-in-2026/
+- https://www.riotgames.com/en/news/2xko-active-development-ends-december-2026
+- https://www.start.gg/tournament/2xko-latinoamerica/details
+- https://x.com/2XK0LATAM
