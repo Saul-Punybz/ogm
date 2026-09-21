@@ -300,3 +300,17 @@ footer.site .small { color: var(--muted); max-width: 46ch; }
 }
 .gv-hero { border: 1px solid var(--line); max-height: 320px; aspect-ratio: auto; height: clamp(180px, 30vw, 320px); }
 .stage-card .pill { align-self: flex-start; }
+
+/* ---------- en vivo ---------- */
+.live-player { background: #000; border: 1px solid var(--line); height: clamp(420px, 42vw, 600px); }
+.live-player #ogm-twitch-live, .live-player iframe { width: 100%; height: 100%; display: block; border: 0; }
+.discord-widget { width: 100%; max-width: 420px; height: 480px; border: 1px solid var(--line); background: var(--surface); }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tab { font-size: 0.85rem; padding: 7px 12px; border: 1px solid var(--line); color: var(--peri); }
+.tab-on { background: var(--flare); border-color: var(--flare); color: var(--ink) !important; font-weight: 700; }
+.top-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
+.top-game { position: relative; display: flex; flex-direction: column; gap: 4px; }
+.top-game img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border: 1px solid var(--line); background: var(--surface); }
+.top-rank { position: absolute; top: 6px; left: 6px; background: var(--ink); color: var(--cream); font-size: 0.75rem; padding: 2px 6px; }
+.top-name { font-weight: 600; font-size: 0.88rem; line-height: 1.25; }
+.top-plats { font-size: 0.72rem; color: var(--muted); }

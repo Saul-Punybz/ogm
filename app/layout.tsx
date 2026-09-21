@@ -29,6 +29,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               <span>Puerto Rico</span>
             </Link>
             <nav className="nav">
+              <Link href="/en-vivo">En vivo</Link>
               <Link href="/juegos">Juegos</Link>
               <Link href="/torneos">Torneos</Link>
               <Link href="/campeones">Campeones</Link>
