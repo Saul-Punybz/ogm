@@ -1,67 +1,95 @@
 import Link from "next/link";
-import { getGames } from "@/lib/queries";
+import { getGames, type Game } from "@/lib/queries";
+import { VoteBlock } from "@/components/vote";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Rankings" };
+export const metadata = { title: "Juegos y rankings" };
 
 const MODO: Record<string, string> = {
   duel: "Uno contra uno",
   squad: "Equipo contra equipo",
-  br: "Battle royale por escuadras",
+  br: "Battle royale",
 };
+
+function GameCard({ g }: { g: Game }) {
+  return (
+    <Link href={`/juegos/${g.slug}`} className="card game-card">
+      <span className="format">
+        {MODO[g.mode]}
+        {g.team_size > 1 ? ` · ${g.team_size} por equipo` : ""}
+      </span>
+      <h3>{g.name}</h3>
+      {g.tagline && <p className="small muted">{g.tagline}</p>}
+      <p className="small muted">{g.platform}</p>
+    </Link>
+  );
+}
 
 export default async function Juegos() {
   const all = await getGames(false);
-  const activos = all.filter((g) => g.is_active);
-  const archivo = all.filter((g) => !g.is_active);
+  const by = (stage: Game["stage"]) => all.filter((g) => g.stage === stage);
 
   return (
     <>
       <section className="hero wrap stack">
-        <div className="eyebrow">Rankings</div>
+        <div className="eyebrow">Juegos</div>
         <h1>Un ranking por juego</h1>
         <p className="muted">
-          Cada juego tiene su propia tabla. Un jugador puede ser el número uno en Free Fire y estar
-          a mitad de tabla en Street Fighter: son ratings independientes.
+          Cada juego tiene su propia tabla. Puedes ser el número uno en Free Fire y estar a mitad
+          de tabla en Clash Royale: son ratings independientes.
         </p>
       </section>
 
       <section className="section wrap stack">
-        <h2>En temporada</h2>
+        <div className="stack-sm">
+          <h2>Temporada 1</h2>
+          <p className="muted small">
+            Un juego por formato. Los tres son gratis y corren en el celular.
+          </p>
+        </div>
         <div className="cards">
-          {activos.map((g) => (
-            <Link key={g.slug} href={`/juegos/${g.slug}`} className="card">
-              <span className={g.is_mobile ? "pill pill-flare" : "pill"}>
-                {g.is_mobile ? "Móvil" : g.platform}
-              </span>
-              <h3>{g.name}</h3>
-              <p className="small muted">{MODO[g.mode]}</p>
-              <p className="small muted">
-                {g.team_size > 1 ? `Escuadras de ${g.team_size}` : "Individual"}
-              </p>
-            </Link>
+          {by("temporada").map((g) => (
+            <GameCard key={g.slug} g={g} />
           ))}
         </div>
       </section>
 
-      {archivo.length > 0 && (
-        <section className="section wrap stack">
-          <h2>Del archivo</h2>
+      <section className="section wrap stack">
+        <div className="stack-sm">
+          <h2>En votación</h2>
           <p className="muted small">
-            Juegos de las temporadas de 2010. Ya no están activos, pero sus campeones siguen en el
-            salón.
+            El cuarto juego lo elige la comunidad, después de un torneo de prueba de cada uno.
           </p>
-          <div className="cards">
-            {archivo.map((g) => (
-              <Link key={g.slug} href={`/juegos/${g.slug}`} className="card">
-                <span className="pill">{g.platform}</span>
-                <h3>{g.name}</h3>
-                <p className="small muted">{MODO[g.mode]}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
+        </div>
+        <VoteBlock />
+      </section>
+
+      <section className="section wrap stack">
+        <div className="stack-sm">
+          <h2>Eventos</h2>
+          <p className="muted small">
+            Torneos especiales con creadores y noches presenciales. No cuentan para el ranking de
+            temporada.
+          </p>
+        </div>
+        <div className="cards">
+          {by("eventos").map((g) => (
+            <GameCard key={g.slug} g={g} />
+          ))}
+        </div>
+      </section>
+
+      <section className="section wrap stack">
+        <div className="stack-sm">
+          <h2>Del archivo</h2>
+          <p className="muted small">Los juegos de 2010. Sus campeones siguen en el salón.</p>
+        </div>
+        <div className="cards">
+          {by("archivo").map((g) => (
+            <GameCard key={g.slug} g={g} />
+          ))}
+        </div>
+      </section>
     </>
   );
 }

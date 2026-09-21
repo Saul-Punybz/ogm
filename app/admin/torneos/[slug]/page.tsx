@@ -17,7 +17,7 @@ export default async function AdminTorneo({ params }: { params: Promise<{ slug: 
   if (!t) notFound();
 
   const [matches, results] = await Promise.all([getMatches(t.id), getResults(t.id)]);
-  const esLobby = t.game_slug === "free-fire" || t.game_slug === "cod-mobile";
+  const esLobby = t.game_mode === "br";
 
   return (
     <>

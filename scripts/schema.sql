@@ -152,3 +152,16 @@ CREATE TABLE IF NOT EXISTS profile_claims (
   created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 CREATE INDEX IF NOT EXISTS idx_claims_status ON profile_claims(status);
+
+-- ---------- Etapas de juego y votacion (tanda 3) ----------
+-- temporada: cuenta para el ranking de la liga | votacion: candidato a entrar
+-- eventos: torneos especiales (creadores, presenciales) | archivo: historia de 2010
+ALTER TABLE games ADD COLUMN IF NOT EXISTS stage TEXT NOT NULL DEFAULT 'temporada';
+ALTER TABLE games ADD COLUMN IF NOT EXISTS tagline TEXT;
+
+-- Un voto por cuenta de Discord; se puede cambiar.
+CREATE TABLE IF NOT EXISTS game_votes (
+  discord_id  TEXT PRIMARY KEY,
+  game_id     INTEGER NOT NULL REFERENCES games(id) ON DELETE CASCADE,
+  created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

@@ -10,6 +10,8 @@ export interface Game {
   platform: string | null;
   is_mobile: boolean;
   is_active: boolean;
+  stage: "temporada" | "votacion" | "eventos" | "archivo";
+  tagline: string | null;
 }
 
 export interface RankRow {
@@ -40,6 +42,8 @@ export interface TournamentRow {
   game_slug: string;
   game_name: string;
   game_short: string;
+  game_mode: "duel" | "squad" | "br";
+  game_stage: string;
   is_mobile: boolean;
 }
 
@@ -54,11 +58,12 @@ export interface ResultRow {
 const TOURNAMENT_FIELDS = `
   t.id, t.slug, t.name, t.starts_at::text AS starts_at, t.venue, t.format, t.summary,
   t.status, t.is_archive, t.is_example,
-  g.slug AS game_slug, g.name AS game_name, g.short_name AS game_short, g.is_mobile`;
+  g.slug AS game_slug, g.name AS game_name, g.short_name AS game_short, g.is_mobile,
+  g.mode AS game_mode, g.stage AS game_stage`;
 
 export function getGames(activeOnly = true) {
   return q<Game>(
-    `SELECT id, slug, name, short_name, mode, team_size, platform, is_mobile, is_active
+    `SELECT id, slug, name, short_name, mode, team_size, platform, is_mobile, is_active, stage, tagline
        FROM games ${activeOnly ? "WHERE is_active = TRUE" : ""}
       ORDER BY sort_order, name`,
   );
@@ -66,7 +71,7 @@ export function getGames(activeOnly = true) {
 
 export function getGame(slug: string) {
   return one<Game>(
-    `SELECT id, slug, name, short_name, mode, team_size, platform, is_mobile, is_active
+    `SELECT id, slug, name, short_name, mode, team_size, platform, is_mobile, is_active, stage, tagline
        FROM games WHERE slug = $1`,
     [slug],
   );
@@ -437,4 +442,23 @@ export function getCounts() {
             (SELECT COUNT(*) FROM tournaments)::int AS tournaments,
             (SELECT COUNT(*) FROM matches)::int AS matches`,
   );
+}
+
+/** Votacion del cuarto juego: candidatos con su conteo. */
+export function getVoteResults() {
+  return q<{ id: number; slug: string; name: string; tagline: string | null; votes: number }>(
+    `SELECT g.id, g.slug, g.name, g.tagline,
+            (SELECT COUNT(*) FROM game_votes v WHERE v.game_id = g.id)::int AS votes
+       FROM games g
+      WHERE g.stage = 'votacion'
+      ORDER BY g.sort_order`,
+  );
+}
+
+export async function getMyVote(discordId: string): Promise<number | null> {
+  const row = await one<{ game_id: number }>(
+    `SELECT game_id FROM game_votes WHERE discord_id = $1`,
+    [discordId],
+  );
+  return row?.game_id ?? null;
 }

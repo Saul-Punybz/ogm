@@ -1,6 +1,6 @@
 # OGM — dónde vamos
 
-Última tanda: **21 de septiembre de 2026** (tanda 2: login con Discord). Trigger: "CONTINUE OGM".
+Última tanda: **21 de septiembre de 2026** (tanda 3: sitio con lo aprendido del estudio). Trigger: "CONTINUE OGM".
 
 ## Qué está hecho y probado
 
@@ -26,10 +26,20 @@ revisada en el navegador.
   rechazada, no-admin no puede aprobar. **Falta:** probar con una app real de
   Discord (hay que crearla — ver README).
 
+- **Sitio con lo aprendido** (tanda 3): juegos por etapa (temporada / votación /
+  eventos / archivo), votación del cuarto juego con Discord (un voto por cuenta,
+  cambiable), portada móvil con "inscripción gratis, premios de auspiciadores",
+  bloque En vivo (Kick + Twitch), página `/marcas`. Canales y contacto salen de
+  variables `OGM_*`: si no están, el sitio dice "por anunciar". Probado: 16 rutas
+  200, votación (votar, cambiar, anónimo, juego no candidato), vista a 500 px.
+
 ## Decisiones tomadas
 
-- Juegos de arranque: **móvil al frente** (Free Fire y CoD Mobile), más SF6 y
-  VALORANT. Decisión de Saul: el nicho nuevo es móvil.
+- **Temporada 1: Free Fire, Clash Royale y Brawlhalla** (uno por formato, gratis,
+  en celular). **Votación:** Mobile Legends vs CoD Mobile. **Eventos:** Stumble
+  Guys y SF6. VALORANT fuera. Base: `research/00_RECOMENDACION.md`.
+- **Inscripción gratis, premios de auspiciadores** hasta la consulta legal por la
+  Ley 81-2019 (modalidad peer-to-peer wagering).
 - **Sin start.gg ni Braacket.** Todo el flujo es propio.
 - Dominio: temporal de Vercel por ahora. **ogmadness.net es de Saul** y se conecta
   cuando se decida.

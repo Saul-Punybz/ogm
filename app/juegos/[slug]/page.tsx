@@ -36,10 +36,19 @@ export default async function JuegoPage({ params }: { params: Promise<{ slug: st
           {game.platform} · {game.mode === "br" ? "Battle royale" : game.mode === "squad" ? "Por equipos" : "Individual"}
         </div>
         <h1>{game.name}</h1>
-        {!game.is_active && (
+        {game.tagline && <p className="muted">{game.tagline}</p>}
+        {game.stage === "archivo" && (
           <p className="banner">
             Juego del archivo. No hay temporada activa; lo que queda es el historial de 2010.
           </p>
+        )}
+        {game.stage === "votacion" && (
+          <p className="banner">
+            Candidato a entrar a la liga. <Link href="/juegos">Vota por el cuarto juego</Link>.
+          </p>
+        )}
+        {game.stage === "eventos" && (
+          <p className="banner">Juego de eventos especiales. No cuenta para el ranking de temporada.</p>
         )}
       </section>
 

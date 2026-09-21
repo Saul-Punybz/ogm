@@ -10,6 +10,8 @@
  *    Todo lo de este bloque lleva is_example = true y sale rotulado en pantalla.
  */
 
+export type Stage = "temporada" | "votacion" | "eventos" | "archivo";
+
 export interface GameSeed {
   slug: string;
   name: string;
@@ -18,19 +20,37 @@ export interface GameSeed {
   team_size: number;
   platform: string;
   is_mobile: boolean;
-  is_active: boolean;
+  stage: Stage;
+  tagline?: string;
   sort_order: number;
 }
 
+// Alineacion de la temporada 1, segun research/00_RECOMENDACION.md:
+// un juego por formato, los tres gratis y en celular.
 export const games: GameSeed[] = [
-  { slug: "free-fire", name: "Free Fire", short_name: "Free Fire", mode: "br", team_size: 4, platform: "Móvil", is_mobile: true, is_active: true, sort_order: 10 },
-  { slug: "cod-mobile", name: "Call of Duty: Mobile", short_name: "CoD Mobile", mode: "br", team_size: 4, platform: "Móvil", is_mobile: true, is_active: true, sort_order: 20 },
-  { slug: "sf6", name: "Street Fighter 6", short_name: "SF6", mode: "duel", team_size: 1, platform: "PS5 · PC", is_mobile: false, is_active: true, sort_order: 30 },
-  { slug: "valorant", name: "VALORANT", short_name: "VALORANT", mode: "squad", team_size: 5, platform: "PC", is_mobile: false, is_active: true, sort_order: 40 },
-  // Juegos del archivo: no están activos, solo sostienen la historia de 2010.
-  { slug: "mw2", name: "Call of Duty: Modern Warfare 2", short_name: "MW2", mode: "squad", team_size: 4, platform: "PlayStation 3", is_mobile: false, is_active: false, sort_order: 90 },
-  { slug: "halo-reach", name: "Halo: Reach", short_name: "Halo Reach", mode: "squad", team_size: 2, platform: "Xbox 360", is_mobile: false, is_active: false, sort_order: 91 },
-  { slug: "ssf4", name: "Super Street Fighter IV", short_name: "SSF4", mode: "duel", team_size: 1, platform: "Xbox 360 · PS3", is_mobile: false, is_active: false, sort_order: 92 },
+  { slug: "free-fire", name: "Free Fire", short_name: "Free Fire", mode: "br", team_size: 4, platform: "Móvil", is_mobile: true, stage: "temporada", sort_order: 10,
+    tagline: "Battle royale por escuadras de cuatro. Corre en cualquier Android." },
+  { slug: "clash-royale", name: "Clash Royale", short_name: "Clash Royale", mode: "duel", team_size: 1, platform: "Móvil", is_mobile: true, stage: "temporada", sort_order: 20,
+    tagline: "Uno contra uno en tres minutos. El celular es la consola." },
+  { slug: "brawlhalla", name: "Brawlhalla", short_name: "Brawlhalla", mode: "duel", team_size: 1, platform: "Móvil · PC · consola", is_mobile: true, stage: "temporada", sort_order: 30,
+    tagline: "Peleas gratis con crossplay: el del celular contra el del PC." },
+
+  // Candidatos al cuarto juego: los decide la votacion de la comunidad.
+  { slug: "mobile-legends", name: "Mobile Legends: Bang Bang", short_name: "Mobile Legends", mode: "squad", team_size: 5, platform: "Móvil", is_mobile: true, stage: "votacion", sort_order: 40,
+    tagline: "MOBA cinco contra cinco. La liga móvil más madura de LATAM." },
+  { slug: "cod-mobile", name: "Call of Duty: Mobile", short_name: "CoD Mobile", mode: "br", team_size: 4, platform: "Móvil", is_mobile: true, stage: "votacion", sort_order: 50,
+    tagline: "Battle royale de Call of Duty en el celular, por escuadras." },
+
+  // Eventos: fuera del ranking de temporada.
+  { slug: "stumble-guys", name: "Stumble Guys", short_name: "Stumble Guys", mode: "br", team_size: 1, platform: "Móvil · PC · consola", is_mobile: true, stage: "eventos", sort_order: 60,
+    tagline: "Lobbies de 32 para eventos con creadores y campamentos." },
+  { slug: "sf6", name: "Street Fighter 6", short_name: "SF6", mode: "duel", team_size: 1, platform: "PS5 · PC", is_mobile: false, stage: "eventos", sort_order: 70,
+    tagline: "Para las noches de peleas presenciales." },
+
+  // Archivo: la historia de 2010.
+  { slug: "mw2", name: "Call of Duty: Modern Warfare 2", short_name: "MW2", mode: "squad", team_size: 4, platform: "PlayStation 3", is_mobile: false, stage: "archivo", sort_order: 90 },
+  { slug: "halo-reach", name: "Halo: Reach", short_name: "Halo Reach", mode: "squad", team_size: 2, platform: "Xbox 360", is_mobile: false, stage: "archivo", sort_order: 91 },
+  { slug: "ssf4", name: "Super Street Fighter IV", short_name: "SSF4", mode: "duel", team_size: 1, platform: "Xbox 360 · PS3", is_mobile: false, stage: "archivo", sort_order: 92 },
 ];
 
 export interface PlayerSeed {
@@ -82,7 +102,7 @@ export const players: PlayerSeed[] = [
   { tag: "Rek", town: "Loíza", is_example: true },
   { tag: "Pipo", town: "Carolina", is_example: true },
 
-  // --- Ejemplos: peleadores de SF6
+  // --- Ejemplos: jugadores de Clash Royale
   { tag: "Rican", town: "San Juan", is_example: true },
   { tag: "Yiyo", town: "Caguas", is_example: true },
   { tag: "ElPulpo", town: "Mayagüez", is_example: true },
@@ -137,8 +157,8 @@ export interface SeasonSeed {
 
 export const seasons: SeasonSeed[] = [
   { slug: "ff-t1-2026", name: "Temporada 1 · 2026", game: "free-fire", starts_on: "2026-09-01", ends_on: "2026-12-20", is_current: true },
-  { slug: "codm-t1-2026", name: "Temporada 1 · 2026", game: "cod-mobile", starts_on: "2026-09-01", ends_on: "2026-12-20", is_current: true },
-  { slug: "sf6-t1-2026", name: "Temporada 1 · 2026", game: "sf6", starts_on: "2026-09-01", ends_on: "2026-12-20", is_current: true },
+  { slug: "cr-t1-2026", name: "Temporada 1 · 2026", game: "clash-royale", starts_on: "2026-09-01", ends_on: "2026-12-20", is_current: true },
+  { slug: "bh-t1-2026", name: "Temporada 1 · 2026", game: "brawlhalla", starts_on: "2026-09-01", ends_on: "2026-12-20", is_current: true },
 ];
 
 export interface MatchSeed {
@@ -291,13 +311,12 @@ export const tournaments: TournamentSeed[] = [
   },
   {
     slug: "copa-isla-codm-1",
-    name: "Copa Isla · CoD Mobile",
+    name: "Torneo de prueba · CoD Mobile",
     game: "cod-mobile",
-    season: "codm-t1-2026",
     starts_at: "2026-09-13T19:00:00-04:00",
     venue: "En línea",
     format: "2 lobbies · 4 escuadras",
-    summary: "Battle royale por escuadras, dos lobbies.",
+    summary: "Uno de los dos torneos de prueba para decidir el cuarto juego de la liga.",
     status: "finalizado",
     is_archive: false,
     is_example: true,
@@ -333,25 +352,25 @@ export const tournaments: TournamentSeed[] = [
     ],
   },
   {
-    slug: "ogm-duels-1",
-    name: "OGM Duels #1",
-    game: "sf6",
-    season: "sf6-t1-2026",
+    slug: "copa-corona-1",
+    name: "Copa Corona #1",
+    game: "clash-royale",
+    season: "cr-t1-2026",
     starts_at: "2026-09-20T18:00:00-04:00",
     venue: "En línea",
-    format: "Eliminación sencilla · 8 jugadores",
-    summary: "Bracket individual de ocho peleadores.",
+    format: "Eliminación sencilla · 8 jugadores · mejor de 3",
+    summary: "Primera copa uno contra uno de la temporada.",
     status: "finalizado",
     is_archive: false,
     is_example: true,
     matches: [
-      { kind: "duel", round: "Cuartos", played_at: "2026-09-20T18:10:00-04:00", sides: [{ player: "Rican", placement: 1, score: 3 }, { player: "Kilo", placement: 2, score: 1 }] },
-      { kind: "duel", round: "Cuartos", played_at: "2026-09-20T18:20:00-04:00", sides: [{ player: "Yiyo", placement: 1, score: 3 }, { player: "Sombra", placement: 2, score: 2 }] },
-      { kind: "duel", round: "Cuartos", played_at: "2026-09-20T18:30:00-04:00", sides: [{ player: "ElPulpo", placement: 1, score: 3 }, { player: "Vero", placement: 2, score: 0 }] },
-      { kind: "duel", round: "Cuartos", played_at: "2026-09-20T18:40:00-04:00", sides: [{ player: "Marie", placement: 1, score: 3 }, { player: "Dayan", placement: 2, score: 2 }] },
-      { kind: "duel", round: "Semifinal", played_at: "2026-09-20T19:00:00-04:00", sides: [{ player: "Rican", placement: 1, score: 3 }, { player: "Yiyo", placement: 2, score: 1 }] },
-      { kind: "duel", round: "Semifinal", played_at: "2026-09-20T19:15:00-04:00", sides: [{ player: "Marie", placement: 1, score: 3 }, { player: "ElPulpo", placement: 2, score: 2 }] },
-      { kind: "duel", round: "Final", played_at: "2026-09-20T19:40:00-04:00", sides: [{ player: "Marie", placement: 1, score: 3 }, { player: "Rican", placement: 2, score: 2 }] },
+      { kind: "duel", round: "Cuartos", played_at: "2026-09-20T18:10:00-04:00", sides: [{ player: "Rican", placement: 1, score: 2 }, { player: "Kilo", placement: 2, score: 1 }] },
+      { kind: "duel", round: "Cuartos", played_at: "2026-09-20T18:20:00-04:00", sides: [{ player: "Yiyo", placement: 1, score: 2 }, { player: "Sombra", placement: 2, score: 1 }] },
+      { kind: "duel", round: "Cuartos", played_at: "2026-09-20T18:30:00-04:00", sides: [{ player: "ElPulpo", placement: 1, score: 2 }, { player: "Vero", placement: 2, score: 0 }] },
+      { kind: "duel", round: "Cuartos", played_at: "2026-09-20T18:40:00-04:00", sides: [{ player: "Marie", placement: 1, score: 2 }, { player: "Dayan", placement: 2, score: 1 }] },
+      { kind: "duel", round: "Semifinal", played_at: "2026-09-20T19:00:00-04:00", sides: [{ player: "Rican", placement: 1, score: 2 }, { player: "Yiyo", placement: 2, score: 1 }] },
+      { kind: "duel", round: "Semifinal", played_at: "2026-09-20T19:15:00-04:00", sides: [{ player: "Marie", placement: 1, score: 2 }, { player: "ElPulpo", placement: 2, score: 1 }] },
+      { kind: "duel", round: "Final", played_at: "2026-09-20T19:40:00-04:00", sides: [{ player: "Marie", placement: 1, score: 2 }, { player: "Rican", placement: 2, score: 1 }] },
     ],
     results: [
       { position: 1, player: "Marie", points: 100 },
@@ -370,6 +389,49 @@ export const tournaments: TournamentSeed[] = [
     format: "3 lobbies · 8 escuadras",
     summary: "Segunda fecha. Inscripción abierta hasta el 2 de octubre.",
     status: "abierto",
+    is_archive: false,
+    is_example: true,
+    matches: [],
+    results: [],
+  },
+  {
+    slug: "brawlhalla-fight-night-1",
+    name: "Brawlhalla Fight Night #1",
+    game: "brawlhalla",
+    season: "bh-t1-2026",
+    starts_at: "2026-10-11T19:00:00-04:00",
+    venue: "En línea · crossplay",
+    format: "Doble eliminación · 1v1",
+    summary: "Primera noche de peleas de la temporada. Celular, PC y consola en el mismo bracket.",
+    status: "anunciado",
+    is_archive: false,
+    is_example: true,
+    matches: [],
+    results: [],
+  },
+  {
+    slug: "prueba-mobile-legends",
+    name: "Torneo de prueba · Mobile Legends",
+    game: "mobile-legends",
+    starts_at: "2026-10-18T18:00:00-04:00",
+    venue: "En línea",
+    format: "5 contra 5 · eliminación sencilla",
+    summary: "El segundo torneo de prueba para decidir el cuarto juego de la liga.",
+    status: "abierto",
+    is_archive: false,
+    is_example: true,
+    matches: [],
+    results: [],
+  },
+  {
+    slug: "stumble-creadores-1",
+    name: "Stumble Guys con creadores",
+    game: "stumble-guys",
+    starts_at: "2026-10-25T20:00:00-04:00",
+    venue: "En línea · en vivo por Kick y Twitch",
+    format: "Lobbies de 32 · evento especial",
+    summary: "Streamers de Puerto Rico contra su comunidad. No cuenta para el ranking de temporada.",
+    status: "anunciado",
     is_archive: false,
     is_example: true,
     matches: [],

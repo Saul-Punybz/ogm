@@ -21,6 +21,8 @@ async function main() {
 
   // Orden inverso a las dependencias.
   for (const table of [
+    "game_votes",
+    "profile_claims",
     "rating_history",
     "ratings",
     "results",
@@ -39,9 +41,9 @@ async function main() {
   const gameId = new Map<string, number>();
   for (const g of games) {
     const [row] = await q<{ id: number }>(
-      `INSERT INTO games (slug, name, short_name, mode, team_size, platform, is_mobile, is_active, sort_order)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING id`,
-      [g.slug, g.name, g.short_name, g.mode, g.team_size, g.platform, g.is_mobile, g.is_active, g.sort_order],
+      `INSERT INTO games (slug, name, short_name, mode, team_size, platform, is_mobile, is_active, sort_order, stage, tagline)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING id`,
+      [g.slug, g.name, g.short_name, g.mode, g.team_size, g.platform, g.is_mobile, g.stage !== "archivo", g.sort_order, g.stage, g.tagline ?? null],
     );
     gameId.set(g.slug, row.id);
   }

@@ -40,6 +40,17 @@ campeón.
 **Para probar sin Discord** (solo en desarrollo): `/api/auth/dev?name=Prueba`
 entra con una cuenta falsa. En producción esa ruta da 404.
 
+## Canales y contacto
+
+`OGM_KICK_URL`, `OGM_TWITCH_URL`, `OGM_DISCORD_INVITE` y `OGM_CONTACT_EMAIL` en
+`.env.local`. Si faltan, el sitio dice "por anunciar" en vez de inventar un enlace.
+
+## Juegos y etapas
+
+Cada juego tiene una etapa: `temporada` (cuenta para la liga), `votacion`
+(candidato; la comunidad vota en `/juegos`), `eventos` (especiales, fuera del
+ranking de temporada) o `archivo` (2010). Se cambia en `data/seed.ts`.
+
 ## Base de datos
 
 - **Sin `DATABASE_URL`**: corre sobre PGlite, un Postgres embebido que guarda

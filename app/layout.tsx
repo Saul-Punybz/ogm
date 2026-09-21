@@ -6,7 +6,7 @@ import { getSession } from "@/lib/session";
 export const metadata: Metadata = {
   title: { default: "OGM · Online Gaming Madness", template: "%s · OGM" },
   description:
-    "La liga de esports de Puerto Rico: rankings por juego, perfiles de jugadores y el salón de campeones desde 2010.",
+    "La liga de esports móvil de Puerto Rico: Free Fire, Clash Royale y Brawlhalla. Inscripción gratis, ranking por juego y salón de campeones desde 2010.",
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -29,10 +29,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               <span>Puerto Rico</span>
             </Link>
             <nav className="nav">
-              <Link href="/juegos">Rankings</Link>
+              <Link href="/juegos">Juegos</Link>
               <Link href="/torneos">Torneos</Link>
               <Link href="/campeones">Campeones</Link>
-              <Link href="/admin">Admin</Link>
+              <Link href="/marcas">Marcas</Link>
             </nav>
             <Link className="nav-cta" href="/cuenta">
               {session ? session.name : "Entrar con Discord"}
@@ -55,7 +55,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               </p>
             </div>
             <p className="small">
-              Ranking con OpenSkill · Hecho en Puerto Rico
+              Ranking con OpenSkill · Hecho en Puerto Rico · <Link href="/admin">Panel</Link>
             </p>
           </div>
         </footer>
