@@ -314,3 +314,71 @@ footer.site .small { color: var(--muted); max-width: 46ch; }
 .top-rank { position: absolute; top: 6px; left: 6px; background: var(--ink); color: var(--cream); font-size: 0.75rem; padding: 2px 6px; }
 .top-name { font-weight: 600; font-size: 0.88rem; line-height: 1.25; }
 .top-plats { font-size: 0.72rem; color: var(--muted); }
+
+/* ---------- auspiciadores ---------- */
+.sponsor { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--flare); padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.sponsor-principal { padding: 28px; }
+.sponsor-principal p:first-of-type { font-size: 1.05rem; }
+.sponsor-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.sponsor-logo { display: block; max-width: 100%; height: auto; }
+.sponsor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.lbl { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--peri); margin-right: 6px; font-weight: 600; }
+.lbl-flare { color: var(--flare); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; vertical-align: middle; }
+
+/* ---------- campeones ---------- */
+.champ-banner { display: grid; grid-template-columns: minmax(220px, 340px) 1fr; gap: 20px; align-items: center; }
+.champ-banner .gv { border: 1px solid var(--line); }
+.champ-card { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--flare); padding: 24px; }
+.champ-main { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; }
+.champ-name { font-size: clamp(1.6rem, 3.4vw, 2.3rem); line-height: 1; }
+.champ-bio { max-width: 62ch; }
+.ficha { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 4px 0 0; }
+.ficha div { background: var(--ink); padding: 10px 12px; }
+.ficha dt { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--peri); }
+.ficha dd { margin: 4px 0 0; font-size: 0.92rem; }
+.socials { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.social { font-size: 0.8rem; padding: 5px 10px; border: 1px solid var(--line); color: var(--cream); }
+.social b { color: var(--peri); font-weight: 600; margin-right: 3px; }
+.social-off { opacity: 0.8; cursor: default; }
+.roster { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.roster-card { background: var(--ink); border: 1px solid var(--line); padding: 14px; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
+.roster-card:hover { border-color: var(--flare); }
+.menciones { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.mencion { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--line); padding: 10px 14px; }
+.presentado { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.presentado .sponsor-logo { height: 32px; width: auto; }
+@media (max-width: 720px) {
+  .champ-banner, .champ-main { grid-template-columns: 1fr; }
+}
+
+/* ---------- insignias y niveles ---------- */
+.badge-row { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.badge-mini { position: relative; display: inline-flex; }
+.badge-count { position: absolute; right: -4px; bottom: -3px; background: var(--ink); border: 1px solid var(--line); font-family: var(--mono); font-size: 0.6rem; padding: 0 3px; }
+.badge-locked { filter: grayscale(1); }
+.badge-case { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.badge-item { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); padding: 12px; }
+.badge-item div { display: flex; flex-direction: column; gap: 2px; }
+.badge-item-locked { opacity: 0.55; }
+.badge-xp { color: var(--flare); }
+.level { display: flex; align-items: center; gap: 12px; max-width: 460px; }
+.level-num { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 52px; height: 52px; background: var(--flare); color: var(--ink); font-family: var(--display); font-size: 1.4rem; line-height: 1; flex: 0 0 auto; }
+.level-num small { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.level-bar-wrap { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+.level-bar { height: 8px; background: var(--surface-2); border: 1px solid var(--line); }
+.level-bar span { display: block; height: 100%; background: var(--flare); }
+
+/* ---------- OGM TV ---------- */
+.onair { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.onair-slot { background: var(--surface); padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.onair-slot h3 { font-size: 1.25rem; }
+.parrilla { display: grid; grid-template-columns: repeat(7, minmax(128px, 1fr)); gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.dia { display: flex; flex-direction: column; gap: 6px; min-width: 128px; }
+.dia h3 { font-size: 0.85rem; display: flex; gap: 6px; align-items: center; color: var(--peri); padding-bottom: 4px; border-bottom: 1px solid var(--line); }
+.dia-hoy h3 { color: var(--cream); border-bottom-color: var(--flare); }
+.slot { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--peri); padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; font-size: 0.88rem; }
+.slot-vivo { border-left-color: var(--flare); }
+.tv-card-top { aspect-ratio: 16 / 9; background: repeating-linear-gradient(135deg, var(--navy) 0 14px, #1a3b7d 14px 28px); display: flex; align-items: center; justify-content: center; }
+.tv-card-top span { font-family: var(--display); font-size: 1.6rem; color: var(--cream); opacity: 0.85; }

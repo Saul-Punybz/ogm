@@ -29,11 +29,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               <span>Puerto Rico</span>
             </Link>
             <nav className="nav">
+              <Link href="/tv">OGM TV</Link>
               <Link href="/en-vivo">En vivo</Link>
               <Link href="/juegos">Juegos</Link>
               <Link href="/torneos">Torneos</Link>
               <Link href="/campeones">Campeones</Link>
-              <Link href="/marcas">Marcas</Link>
+              <Link href="/auspiciadores">Auspiciadores</Link>
             </nav>
             <Link className="nav-cta" href="/cuenta">
               {session ? session.name : "Entrar con Discord"}
@@ -56,7 +57,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               </p>
             </div>
             <p className="small">
-              Ranking con OpenSkill · Hecho en Puerto Rico · <Link href="/admin">Panel</Link>
+              Ranking con OpenSkill · Hecho en Puerto Rico · <Link href="/marcas">Para marcas</Link> · <Link href="/admin">Panel</Link>
             </p>
           </div>
         </footer>

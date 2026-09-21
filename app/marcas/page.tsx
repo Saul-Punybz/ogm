@@ -15,6 +15,11 @@ const FORMATOS = [
       "Una copa con tu nombre en uno de los juegos de la liga, llave en mano: inscripción, reglas, transmisión, premios y cobertura. Sale de nuestra plataforma con resultados y perfiles reales.",
   },
   {
+    titulo: "OGM TV",
+    texto:
+      "Presenta un programa del canal o pon tu anuncio en las tandas entre partidas y lobbies de cada transmisión.",
+  },
+  {
     titulo: "Temporada",
     texto:
       "Tu marca en el nombre de la temporada, en los rankings, en el marcador de cada transmisión y en los premios. Es la presencia más larga: meses, no un fin de semana.",

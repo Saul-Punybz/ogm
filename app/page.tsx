@@ -113,7 +113,7 @@ export default async function Home() {
               <Link href={`/jugadores/${encodeURIComponent(momentos.subida.tag)}`} className="moment">
                 <span className="eyebrow">Jugador del mes</span>
                 <div className="who">
-                  <Avatar tag={momentos.subida.tag} url={momentos.subida.avatar_url} size={40} />
+                  <Avatar tag={momentos.subida.tag} url={momentos.subida.avatar_url} example={momentos.subida.is_example} size={40} />
                   <h3>{momentos.subida.tag}</h3>
                 </div>
                 <span className="big">+{momentos.subida.delta}</span>
@@ -153,7 +153,7 @@ export default async function Home() {
               <Link href={`/jugadores/${encodeURIComponent(momentos.racha.tag)}`} className="moment">
                 <span className="eyebrow">En racha</span>
                 <div className="who">
-                  <Avatar tag={momentos.racha.tag} url={momentos.racha.avatar_url} size={40} />
+                  <Avatar tag={momentos.racha.tag} url={momentos.racha.avatar_url} example={momentos.racha.is_example} size={40} />
                   <h3>{momentos.racha.tag}</h3>
                 </div>
                 <span className="big">{momentos.racha.wins}</span>
@@ -224,7 +224,7 @@ export default async function Home() {
                     <td className={`pos ${i === 0 ? "pos-1" : ""}`}>{i + 1}</td>
                     <td>
                       <Link href={`/jugadores/${encodeURIComponent(r.tag)}`} className="who tag">
-                        <Avatar tag={r.tag} url={r.avatar_url} size={28} />
+                        <Avatar tag={r.tag} url={r.avatar_url} example={r.is_example} size={28} />
                         <span>{r.tag}</span>
                       </Link>
                     </td>

@@ -244,12 +244,17 @@ export interface PlayerProfile {
   is_example: boolean;
   verified: boolean;
   avatar_url: string | null;
+  bio: string | null;
+  main: string | null;
+  device: string | null;
+  instagram: string | null;
+  youtube: string | null;
 }
 
 export function getPlayer(tag: string) {
   return one<PlayerProfile>(
     `SELECT id, tag, full_name, town, twitch, tiktok, discord, is_example,
-            (discord_id IS NOT NULL) AS verified, avatar_url
+            (discord_id IS NOT NULL) AS verified, avatar_url, bio, main, device, instagram, youtube
        FROM players WHERE LOWER(tag) = LOWER($1)`,
     [tag],
   );
@@ -375,8 +380,8 @@ export function getTeam(slug: string) {
 }
 
 export function getTeamRoster(teamId: number) {
-  return q<{ tag: string; town: string | null; display: number | null; avatar_url: string | null }>(
-    `SELECT p.tag, p.town, r.display, p.avatar_url
+  return q<{ tag: string; town: string | null; display: number | null; avatar_url: string | null; is_example: boolean }>(
+    `SELECT p.tag, p.town, r.display, p.avatar_url, p.is_example
        FROM team_players tp
        JOIN players p ON p.id = tp.player_id
        LEFT JOIN ratings r ON r.player_id = p.id

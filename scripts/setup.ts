@@ -9,7 +9,7 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { getDb, q } from "../lib/db";
 import { recalcRatings } from "../lib/rating";
-import { games, players, teams, seasons, tournaments } from "../data/seed";
+import { games, players, teams, seasons, tournaments, perfiles, equipos } from "../data/seed";
 
 async function main() {
   const db = await getDb();
@@ -70,6 +70,24 @@ async function main() {
         playerId.get(tag),
       ]);
     }
+  }
+
+  // Perfiles detallados de ejemplo (bio, redes, mazo o rol, dispositivo).
+  for (const [tag, p] of Object.entries(perfiles)) {
+    await q(
+      `UPDATE players SET full_name = COALESCE($2, full_name), bio = $3, main = $4, device = $5,
+              twitch = $6, tiktok = $7, instagram = $8, youtube = $9
+        WHERE tag = $1`,
+      [tag, p.full_name ?? null, p.bio, p.main ?? null, p.device ?? null, p.twitch ?? null,
+       p.tiktok ?? null, p.instagram ?? null, p.youtube ?? null],
+    );
+  }
+  for (const [slug, e] of Object.entries(equipos)) {
+    await q(`UPDATE teams SET bio = $2, captain_id = $3 WHERE slug = $1`, [
+      slug,
+      e.bio,
+      e.captain ? (playerId.get(e.captain) ?? null) : null,
+    ]);
   }
 
   const seasonId = new Map<string, number>();

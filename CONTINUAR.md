@@ -42,6 +42,25 @@ revisada en el navegador.
   calculados de los datos (jugador del mes, sorpresa, más bajas, racha).
   Gráfica de rating en cada perfil. Fotos de Discord o iniciales en rankings.
 
+- **Tanda 5 — comunidad y marcas:**
+  - `/en-vivo`: Twitch con chat, widget de Discord (`OGM_DISCORD_SERVER_ID`) y
+    "lo más transmitido" por plataforma (Twitch Helix + IGDB). **Falta la app de
+    Twitch** (`TWITCH_CLIENT_ID/SECRET`) y **no está verificado en vivo**: la red
+    de esta sesión bloquea api.twitch.tv. La agrupación sí está probada
+    (`scripts/check-platforms.ts`).
+  - `/tv` (OGM TV): ahora/siguiente en hora de PR, programación semanal,
+    programas con auspiciador, tanda comercial y formatos para anunciarse.
+    Datos de ejemplo en `data/tv.ts`.
+  - `/auspiciadores`: marcas **inventadas** rotuladas como ejemplo
+    (`data/sponsors.ts`, dominios `.example`), logos generados, premios y su
+    presencia en OGM TV.
+  - `/campeones`: podio de cada torneo con foto, bio, ficha, redes, nivel e
+    insignias. Fotos: DiceBear "Notionists" (CC0) solo para ejemplos; los
+    reales de 2010 van con iniciales y sin redes inventadas. Redes de ejemplo
+    se muestran sin enlace.
+  - Insignias y niveles (`lib/badges.ts`): 12 insignias calculadas de los datos,
+    XP y 10 niveles. En campeones y en cada perfil (vitrina completa).
+
 ## Decisiones tomadas
 
 - **Temporada 1: Free Fire, Clash Royale y Brawlhalla** (uno por formato, gratis,

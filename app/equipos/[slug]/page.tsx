@@ -62,7 +62,7 @@ export default async function EquipoPage({ params }: { params: Promise<{ slug: s
                   <tr key={p.tag}>
                     <td>
                       <Link href={`/jugadores/${encodeURIComponent(p.tag)}`} className="who tag">
-                        <Avatar tag={p.tag} url={p.avatar_url} size={28} />
+                        <Avatar tag={p.tag} url={p.avatar_url} example={p.is_example} size={28} />
                         <span>{p.tag}</span>
                       </Link>
                     </td>

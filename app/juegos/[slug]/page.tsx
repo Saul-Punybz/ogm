@@ -119,7 +119,7 @@ export default async function JuegoPage({ params }: { params: Promise<{ slug: st
                     <td className={`pos ${i === 0 ? "pos-1" : ""}`}>{i + 1}</td>
                     <td>
                       <Link href={`/jugadores/${encodeURIComponent(r.tag)}`} className="who tag">
-                        <Avatar tag={r.tag} url={r.avatar_url} size={28} />
+                        <Avatar tag={r.tag} url={r.avatar_url} example={r.is_example} size={28} />
                         <span>
                           {r.tag}
                           {esEquipo && <span className="sub">{r.town ?? "Puerto Rico"}</span>}

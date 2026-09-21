@@ -10,6 +10,8 @@
     "recalc": "tsx scripts/recalc.ts"
   },
   "dependencies": {
+    "@dicebear/collection": "9.4.2",
+    "@dicebear/core": "9.4.2",
     "@electric-sql/pglite": "0.5.8",
     "arctic": "3.7.0",
     "jose": "6.2.12",

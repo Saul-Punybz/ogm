@@ -11,6 +11,9 @@ import { fecha, plural, resultadoTexto } from "@/lib/format";
 import { ratingHistory } from "@/lib/highlights";
 import { Avatar } from "@/components/avatar";
 import { RatingChart } from "@/components/rating-chart";
+import { Socials } from "@/components/socials";
+import { progresoDe } from "@/lib/badges";
+import { BadgeCase, Level } from "@/components/badges";
 
 export const dynamic = "force-dynamic";
 
@@ -31,6 +34,7 @@ export default async function JugadorPage({ params }: { params: Promise<{ tag: s
     getPlayerRivals(player.id),
   ]);
 
+  const progreso = await progresoDe(player.id);
   const historias = await Promise.all(
     ratings.map(async (r) => ({ ...r, puntos: await ratingHistory(player.id, r.game_id) })),
   );
@@ -42,7 +46,7 @@ export default async function JugadorPage({ params }: { params: Promise<{ tag: s
       <section className="hero wrap stack">
         <div className="eyebrow">{player.town ?? "Puerto Rico"}</div>
         <div className="who">
-          <Avatar tag={player.tag} url={player.avatar_url} size={64} />
+          <Avatar tag={player.tag} url={player.avatar_url} example={player.is_example} size={72} />
           <h1>{player.tag}</h1>
         </div>
         {player.full_name && player.full_name !== player.tag && (
@@ -61,6 +65,16 @@ export default async function JugadorPage({ params }: { params: Promise<{ tag: s
             </a>
           )}
         </div>
+        <Level progreso={progreso} />
+        {player.bio && <p style={{ maxWidth: "62ch" }}>{player.bio}</p>}
+        {(player.main || player.device) && (
+          <p className="small muted">
+            {player.main}
+            {player.main && player.device ? " · " : ""}
+            {player.device}
+          </p>
+        )}
+        <Socials redes={player} example={player.is_example} />
         {player.is_example && (
           <p className="banner">Perfil de ejemplo, cargado para mostrar cómo se ve la plataforma.</p>
         )}
@@ -89,6 +103,16 @@ export default async function JugadorPage({ params }: { params: Promise<{ tag: s
           )}
         </section>
       )}
+
+      <section className="section wrap stack">
+        <div className="row-between">
+          <h2>Insignias</h2>
+          <span className="small muted">
+            {progreso.earned.length} de {progreso.earned.length + progreso.locked.length} ganadas
+          </span>
+        </div>
+        <BadgeCase progreso={progreso} />
+      </section>
 
       <section className="section wrap stack">
         <h2>Rating por juego</h2>

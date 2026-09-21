@@ -20,6 +20,7 @@ const CON_ANTES = `
 export interface Subida {
   tag: string;
   avatar_url: string | null;
+  is_example: boolean;
   game_name: string;
   game_slug: string;
   delta: number;
@@ -30,14 +31,14 @@ export interface Subida {
 export function jugadorDeLaSemana() {
   return one<Subida>(
     `${CON_ANTES}
-     SELECT p.tag, p.avatar_url, g.name AS game_name, g.slug AS game_slug,
+     SELECT p.tag, p.avatar_url, p.is_example, g.name AS game_name, g.slug AS game_slug,
             SUM(h.display - h.antes)::int AS delta,
             (SELECT r.display FROM ratings r WHERE r.player_id = h.player_id AND r.game_id = h.game_id) AS display
        FROM h
        JOIN players p ON p.id = h.player_id
        JOIN games g ON g.id = h.game_id
       WHERE h.played_at >= NOW() - INTERVAL '${VENTANA}'
-      GROUP BY h.player_id, h.game_id, p.tag, p.avatar_url, g.name, g.slug
+      GROUP BY h.player_id, h.game_id, p.tag, p.avatar_url, p.is_example, g.name, g.slug
       ORDER BY delta DESC, p.tag
       LIMIT 1`,
   );
@@ -109,6 +110,7 @@ export function masBajas() {
 export interface Racha {
   tag: string;
   avatar_url: string | null;
+  is_example: boolean;
   game_name: string;
   wins: number;
 }
@@ -119,11 +121,12 @@ export async function mejorRacha(): Promise<Racha | null> {
     player_id: number;
     tag: string;
     avatar_url: string | null;
+    is_example: boolean;
     game_name: string;
     game_id: number;
     placement: number;
   }>(
-    `SELECT ms.player_id, p.tag, p.avatar_url, g.name AS game_name, g.id AS game_id, ms.placement
+    `SELECT ms.player_id, p.tag, p.avatar_url, p.is_example, g.name AS game_name, g.id AS game_id, ms.placement
        FROM match_sides ms
        JOIN matches m ON m.id = ms.match_id AND m.kind = 'duel'
        JOIN players p ON p.id = ms.player_id
@@ -146,7 +149,7 @@ export async function mejorRacha(): Promise<Racha | null> {
     if (r.placement === 1) {
       streak += 1;
       if (streak >= 2 && (!best || streak > best.wins)) {
-        best = { tag: r.tag, avatar_url: r.avatar_url, game_name: r.game_name, wins: streak };
+        best = { tag: r.tag, avatar_url: r.avatar_url, is_example: r.is_example, game_name: r.game_name, wins: streak };
       }
     } else {
       alive = false;

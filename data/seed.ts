@@ -440,3 +440,134 @@ export const tournaments: TournamentSeed[] = [
 ];
 
 export const lobbyPoints = { "free-fire": FF_LOBBY_POINTS, "cod-mobile": CODM_LOBBY_POINTS };
+
+/**
+ * Perfiles detallados de los jugadores de EJEMPLO (todo inventado, rotulado en
+ * pantalla). Los campeones reales de 2010 no llevan nada de esto a proposito.
+ */
+export interface PerfilSeed {
+  full_name?: string;
+  bio: string;
+  main?: string;
+  device?: string;
+  twitch?: string;
+  tiktok?: string;
+  instagram?: string;
+  youtube?: string;
+}
+
+export const perfiles: Record<string, PerfilSeed> = {
+  Marie: {
+    full_name: "Marielys Ortiz",
+    bio: "Juega Clash Royale desde la escuela superior. Ganó la primera Copa Corona sin perder una serie y transmite sus partidas de ranked los martes.",
+    main: "Mazo de Montapuercos 2.6",
+    device: "iPhone 13",
+    twitch: "marie_cr",
+    tiktok: "marie.cr",
+    instagram: "marie.cr",
+  },
+  Rican: {
+    full_name: "Luis \"Rican\" Meléndez",
+    bio: "Finalista de la Copa Corona. Conocido por remontar series 0-1 con mazos de control.",
+    main: "Mazo de Gólem con Bruja nocturna",
+    device: "Samsung Galaxy S23",
+    twitch: "ricancr",
+    tiktok: "rican787",
+  },
+  ElPulpo: {
+    full_name: "Pablo Irizarry",
+    bio: "Semifinalista desde Mayagüez. Estudia ingeniería y entrena en los recesos.",
+    main: "Mazo de ciclo rápido 2.9",
+    device: "Motorola Edge",
+    tiktok: "elpulpo.mayaguez",
+  },
+  Yiyo: {
+    bio: "Semifinalista de Caguas. Jugador agresivo, siempre abre por el puente.",
+    main: "Mazo de Montapuercos y Terremoto",
+    device: "iPhone 12",
+    instagram: "yiyo.caguas",
+  },
+  GloKing: {
+    full_name: "Gabriel Colón",
+    bio: "Capitán de Los GloK. Hace las rotaciones y decide cuándo se entra a la zona.",
+    main: "Rol: capitán y rotación",
+    device: "iPhone 14 Pro",
+    twitch: "gloking_ff",
+    tiktok: "gloking.ff",
+    youtube: "GloKingFF",
+  },
+  Mandi: {
+    full_name: "Amanda Figueroa",
+    bio: "La que más bajas hizo en la Fecha 1. Especialista en francotirador.",
+    main: "Rol: francotiradora",
+    device: "Samsung Galaxy A54",
+    tiktok: "mandi.ff",
+    instagram: "mandi.glok",
+  },
+  ElNene: {
+    bio: "El más joven del equipo. Entra primero a cada pelea.",
+    main: "Rol: asalto",
+    device: "Xiaomi Redmi Note 12",
+    tiktok: "elnene.ff",
+  },
+  Brayan23: {
+    bio: "Soporte de Los GloK. Revive, cura y cubre la retirada.",
+    main: "Rol: soporte",
+    device: "iPhone 11",
+    instagram: "brayan23.pr",
+  },
+  HunterBay: {
+    full_name: "Héctor Báez",
+    bio: "Capitán de Bayamón Hunters, campeones del torneo de prueba de CoD Mobile.",
+    main: "Rol: capitán · subfusil",
+    device: "iPad Air",
+    twitch: "hunterbay",
+    tiktok: "hunterbay.codm",
+  },
+  Lizzy: {
+    bio: "Francotiradora de Bayamón Hunters. Terminó el Lobby 2 con 13 bajas de escuadra.",
+    main: "Rol: francotiradora",
+    device: "iPhone 15",
+    instagram: "lizzy.codm",
+  },
+  OmarPR: {
+    bio: "Asalto de Bayamón Hunters, de Cataño.",
+    main: "Rol: asalto · escopeta",
+    device: "Samsung Galaxy S22",
+  },
+  Tito: {
+    bio: "El veterano de Bayamón Hunters. Jugó MW2 en los torneos de 2010.",
+    main: "Rol: ancla",
+    device: "iPhone 13 mini",
+    youtube: "TitoJuega",
+  },
+  KobraPR: {
+    bio: "Juega en dos escuadras: Caribe Squad en Free Fire y Team Madness en CoD Mobile.",
+    main: "Rol: asalto",
+    device: "iPhone 14",
+    twitch: "kobrapr",
+  },
+  MadnessJP: {
+    full_name: "Juan Pablo Rosado",
+    bio: "Capitán de Team Madness, el equipo oficial de OGM desde 2010.",
+    main: "Rol: capitán",
+    device: "iPhone 15 Pro",
+    twitch: "madnessjp",
+    tiktok: "madness.jp",
+  },
+};
+
+export const equipos: Record<string, { bio: string; captain?: string }> = {
+  "los-glok-ff": {
+    bio: "Los GloK ganaron Battle My Crew en 2010 jugando MW2. En 2026 regresan con otra generación, ahora en Free Fire, y ganaron la primera fecha de la Liga Móvil.",
+    captain: "GloKing",
+  },
+  "bayamon-hunters": {
+    bio: "Escuadra de Bayamón que se armó para el torneo de prueba de CoD Mobile y lo ganó en el segundo lobby.",
+    captain: "HunterBay",
+  },
+  "team-madness-ff": {
+    bio: "El equipo oficial de OGM. En 2010 retaba a cualquiera en Halo: Reach; hoy compite en Free Fire.",
+    captain: "MadnessJP",
+  },
+};
