@@ -65,6 +65,20 @@ Tres agentes investigaron en paralelo: `research/01_moviles_establecidos.md`,
 verificar antes de cobrar nada: la Ley 81-2019 de PR mencionaría los esports
 como actividad regulada por la Comisión de Juegos.
 
+## Cuentas de OGM (pendiente)
+
+OGM todavía no tiene canales propios (21 sep 2026). Cuando existan, llenar en
+`.env.local` (ya tiene los espacios y un `AUTH_SECRET` generado):
+
+- `OGM_TWITCH_URL`, `OGM_KICK_URL`, `OGM_DISCORD_INVITE`, `OGM_CONTACT_EMAIL`
+- La app de Discord para el login se crea **bajo la cuenta de OGM**, no la
+  personal de Saul: `DISCORD_CLIENT_ID` / `DISCORD_CLIENT_SECRET`, redirect
+  `<APP_URL>/api/auth/discord/callback`. El Client Secret lo pega Saul.
+- `ADMIN_DISCORD_IDS`: el ID numérico de Discord de cada admin.
+
+Mientras tanto el sitio dice "por anunciar" y el login funciona con la ruta de
+desarrollo `/api/auth/dev?name=...`.
+
 ## Notas de operación
 
 - PGlite es de un solo proceso: parar `npm run dev` antes de `npm run setup`.
