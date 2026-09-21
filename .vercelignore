@@ -1,0 +1,6 @@
+.data
+.next
+.env
+.env.*
+.admin-password
+node_modules

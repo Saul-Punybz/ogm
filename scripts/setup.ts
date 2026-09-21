@@ -2,7 +2,10 @@
  * Crea las tablas, carga los datos de arranque y calcula el ranking.
  * Es seguro correrlo las veces que haga falta: borra y vuelve a cargar.
  *
- *   npm run setup
+ *   npm run setup             borra y recarga todo (desarrollo)
+ *   npm run setup -- --if-empty   solo aplica el esquema; carga datos si la base
+ *                                 esta vacia. Es lo que corre en cada build de
+ *                                 Vercel: un deploy nunca borra datos reales.
  */
 
 import { readFile } from "node:fs/promises";
@@ -18,6 +21,15 @@ async function main() {
   const schema = await readFile(resolve(process.cwd(), "scripts/schema.sql"), "utf8");
   await db.exec(schema);
   console.log("Tablas listas.");
+
+  if (process.argv.includes("--if-empty")) {
+    const [{ n }] = await q<{ n: number }>(`SELECT COUNT(*)::int AS n FROM games`);
+    if (n > 0) {
+      console.log(`La base ya tiene datos (${n} juegos): no se toca.`);
+      process.exit(0);
+    }
+    console.log("Base vacía: cargando los datos de arranque.");
+  }
 
   // Orden inverso a las dependencias.
   for (const table of [

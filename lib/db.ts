@@ -24,14 +24,17 @@ async function connect(): Promise<Db> {
 
   if (url) {
     const { default: postgres } = await import("postgres");
-    const sql = postgres(url, { max: 5, idle_timeout: 20 });
+    // prepare: false porque el pooler de Neon (PgBouncer en modo transaccion) no
+    // mantiene consultas preparadas entre transacciones.
+    const sql = postgres(url, { max: 5, idle_timeout: 20, prepare: false });
     return {
       kind: "postgres",
       async query<T>(text: string, params: Params = []) {
         return (await sql.unsafe(text, params as never[])) as unknown as T[];
       },
       async exec(text: string) {
-        await sql.unsafe(text);
+        // .simple(): protocolo simple, permite varias sentencias en un envio (el esquema).
+        await sql.unsafe(text).simple();
       },
     };
   }

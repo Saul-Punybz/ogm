@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "vercel-build": "tsx scripts/setup.ts --if-empty && next build",
     "start": "next start",
     "setup": "tsx scripts/setup.ts",
     "recalc": "tsx scripts/recalc.ts"
