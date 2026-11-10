@@ -104,7 +104,7 @@ revisada en el navegador.
   check-in, reporte con captura y disputas, temporadas, suizo, elegibilidad).**
   Reusar `brackets-manager` (MIT) y `brackets-viewer` (ISC). Tandas: 1 brackets +
   seeding · 2 equipos + check-in + disputas · 3 temporadas NECC + elegibilidad ·
-  4 stats por partida + estaciones/stream. Nombre de la plataforma: pendiente.
+  4 stats por partida + estaciones/stream. **Nombre (10 nov): Popup Arena.** popuparena.com tomado (desde 2008); libres al 10 nov: popuparena.gg, .net, .io, .pr, popup-arena.com. Sin comprar; marca USPTO sin revisar.
 - ~~Temporada 1: Free Fire, Clash Royale y Brawlhalla~~ (reemplazado el 10 nov
   por lo de arriba). Base vieja: `research/00_RECOMENDACION.md`.
 - **Inscripción gratis, premios de auspiciadores** hasta la consulta legal por la
