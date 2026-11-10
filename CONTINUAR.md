@@ -91,9 +91,22 @@ revisada en el navegador.
 
 ## Decisiones tomadas
 
-- **Temporada 1: Free Fire, Clash Royale y Brawlhalla** (uno por formato, gratis,
-  en celular). **Votación:** Mobile Legends vs CoD Mobile. **Eventos:** Stumble
-  Guys y SF6. VALORANT fuera. Base: `research/00_RECOMENDACION.md`.
+- **10 nov 2026 — cambio de rumbo (Saul):** "lo móvil" es el **venue**: OGM es un
+  evento itinerante que va de lugar en lugar, no una liga de juegos de celular.
+  **Juegos prioritarios (consola/PC):** Overwatch 2, Rainbow Six Siege, Rocket
+  League, Smash Ultimate, Valorant, League of Legends, Street Fighter 6, Mortal
+  Kombat 1, Tekken 8, Fatal Fury: City of the Wolves, Marvel Rivals, Guilty Gear
+  Strive, Marvel vs. Capcom, Mario Kart World, Fortnite, entre otros. Ligas por
+  equipo con formato estilo NECC (7 semanas + playoffs); pelea con reglas tipo Evo.
+  Bosquejo original de la app: `~/Downloads/Bosquejo de Aplicacion.docx`.
+- **Plataforma propia = lo mejor de start.gg (brackets, seeding por rating,
+  reporte por juego/personaje, estaciones, cola de stream) + Battlefy (equipos,
+  check-in, reporte con captura y disputas, temporadas, suizo, elegibilidad).**
+  Reusar `brackets-manager` (MIT) y `brackets-viewer` (ISC). Tandas: 1 brackets +
+  seeding · 2 equipos + check-in + disputas · 3 temporadas NECC + elegibilidad ·
+  4 stats por partida + estaciones/stream. Nombre de la plataforma: pendiente.
+- ~~Temporada 1: Free Fire, Clash Royale y Brawlhalla~~ (reemplazado el 10 nov
+  por lo de arriba). Base vieja: `research/00_RECOMENDACION.md`.
 - **Inscripción gratis, premios de auspiciadores** hasta la consulta legal por la
   Ley 81-2019 (modalidad peer-to-peer wagering).
 - **Sin start.gg ni Braacket.** Todo el flujo es propio.
