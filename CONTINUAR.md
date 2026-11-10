@@ -91,6 +91,17 @@ revisada en el navegador.
 
 ## Decisiones tomadas
 
+- **10 nov 2026 — stack nuevo (Saul): Popup Arena va en Laravel, todo en PHP, en el
+  hosting compartido de Bluehost**, en caribbeanproleague.com (ogmadness.net en el
+  mismo hosting). No hay Node en el servidor (no hay "Setup Node.js App"; hay
+  Application Manager, SSH, MultiPHP). Paquetes candidatos (versión al 10 nov):
+  Laravel 13 (PHP ≥8.3), Livewire 4, Filament 5 (admin), Socialite + providers
+  (Discord, Twitch, Steam, Apple; Epic no existe: hacerlo propio), spatie
+  permission/medialibrary/backup. Sin WebSockets: Livewire `wire:poll`. Colas y
+  ranking con el cron de cPanel. OpenSkill hay que portarlo a PHP y verificarlo
+  contra el de JS. Esta app de Next.js queda en Vercel solo como demo hasta que se
+  reemplace. **Pendiente: versión de PHP del servidor (MultiPHP Manager).**
+
 - **10 nov 2026 — cambio de rumbo (Saul):** "lo móvil" es el **venue**: OGM es un
   evento itinerante que va de lugar en lugar, no una liga de juegos de celular.
   **Juegos prioritarios (consola/PC):** Overwatch 2, Rainbow Six Siege, Rocket
